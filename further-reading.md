@@ -277,7 +277,48 @@ address = {New York, NY, USA},
 
 ## 分布式系统验证
 
+###模型检验
 
+```
+@inproceedings{Guo11,
+ author = {Guo, Huayang and Wu, Ming and Zhou, Lidong and Hu, Gang and Yang, Junfeng and Zhang, Lintao},
+ title = {Practical Software Model Checking via Dynamic Interface Reduction},
+ booktitle = {Proceedings of the Twenty-Third ACM Symposium on Operating Systems Principles},
+ series = {SOSP '11},
+ year = {2011},
+ isbn = {978-1-4503-0977-6},
+ location = {Cascais, Portugal},
+ pages = {265--278},
+ numpages = {14},
+ url = {http://doi.acm.org/10.1145/2043556.2043582},
+ doi = {10.1145/2043556.2043582},
+ acmid = {2043582},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {dynamic interface reduction, software model checking, state space reduction},
+} 
+```
+
+###定理证明
+
+```latex bib
+@inproceedings{Hawblitzel15,
+ author = {Hawblitzel, Chris and Howell, Jon and Kapritsos, Manos and Lorch, Jacob R. and Parno, Bryan and Roberts, Michael L. and Setty, Srinath and Zill, Brian},
+ title = {IronFleet: Proving Practical Distributed Systems Correct},
+ booktitle = {Proceedings of the 25th Symposium on Operating Systems Principles},
+ series = {SOSP '15},
+ year = {2015},
+ isbn = {978-1-4503-3834-9},
+ location = {Monterey, California},
+ pages = {1--17},
+ numpages = {17},
+ url = {http://doi.acm.org/10.1145/2815400.2815428},
+ doi = {10.1145/2815400.2815428},
+ acmid = {2815428},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+```
 
 ## 分布式系统实现
 
