@@ -277,7 +277,7 @@ address = {New York, NY, USA},
 
 ## 分布式系统验证
 
-###模型检验
+### 模型检验
 
 ```
 @inproceedings{Guo11,
@@ -299,7 +299,7 @@ address = {New York, NY, USA},
 } 
 ```
 
-###定理证明
+### 定理证明
 
 ```latex bib
 @inproceedings{Hawblitzel15,
