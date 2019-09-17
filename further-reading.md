@@ -27,8 +27,8 @@ address = {New York, NY, USA},
 @inproceedings{Mattern89,
 author = {Friedemann Mattern},
 title = {Virtual time and global states of distributed systems},
-booktitle = "Proc. International Workshop on Parallel and Distributed Algorithms",
-address = "Holland",
+booktitle = {Proc. International Workshop on Parallel and Distributed Algorithms},
+address = {Holland},
 year = {1989},
 pages = {215--226},
 }
@@ -279,7 +279,7 @@ address = {New York, NY, USA},
 
 ### 模型检验
 
-```
+``` latex bib
 @inproceedings{Guo11,
  author = {Guo, Huayang and Wu, Ming and Zhou, Lidong and Hu, Gang and Yang, Junfeng and Zhang, Lintao},
  title = {Practical Software Model Checking via Dynamic Interface Reduction},
@@ -324,7 +324,7 @@ address = {New York, NY, USA},
 
 ### 分布式系统基础
 
-```
+``` latex bib
 CAP 定理 (由Eric Brewer在2000年提出; 此处所选是12年后Gilbert和Lynch对CAP定理所作的阐释)
 
 @article{Gilbert12,
