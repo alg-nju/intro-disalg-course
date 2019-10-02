@@ -1,5 +1,6 @@
+# 《分布式算法入门》课程相关论文
 
-## 分布式系统理论
+## 计算模型与基础理论
 
 ### 计算模型基础
 
@@ -218,7 +219,9 @@ publisher = {ACM},
 }
 ```
 
-### 经典分布式算法
+
+
+## 重要问题与经典算法
 
 ```
 Lamport's Bakery 算法
@@ -252,6 +255,8 @@ Lamport的Paxos算法
 }
 ```
 
+
+
 ### 不可能性结果
 
 ```latex bib
@@ -275,7 +280,36 @@ address = {New York, NY, USA},
 } 
 ```
 
-## 分布式系统验证
+```
+@book{Attiya14,
+ author = {Attiya, Hagit and Ellen, Faith},
+ title = {Impossibility Results for Distributed Computing},
+ year = {2014},
+ isbn = {9781627051712},
+ publisher = {Morgan \& Claypool},
+ }
+```
+
+
+```
+@Article{Fich2003,
+ author="Fich, Faith and Ruppert, Eric",
+ title="Hundreds of impossibility results for distributed computing",
+ journal="Distributed Computing",
+ year="2003",
+ month="Sep",
+ day="01",
+ volume="16",
+ number="2",
+ pages="121--163",
+ issn="1432-0452",
+ doi="10.1007/s00446-003-0091-y",
+ url="https://doi.org/10.1007/s00446-003-0091-y"
+}
+```
+
+
+## 形式化规约与验证
 
 ### 模型检验
 
@@ -320,7 +354,8 @@ address = {New York, NY, USA},
 } 
 ```
 
-## 分布式系统实现
+
+## 系统设计与实现
 
 ### 分布式系统基础
 
@@ -356,6 +391,8 @@ doi={10.1109/MC.2012.33},
 publisher = {IEEE Computer Society},
 }
 ```
+
+
 
 ### 分布式存储系统
 
@@ -519,6 +556,8 @@ doi = {10.14778/1454159.1454167},
 publisher = {VLDB Endowment},
 }
 ```
+
+
 
 ### 分布式协同服务
 
