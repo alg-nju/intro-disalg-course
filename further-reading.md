@@ -2,9 +2,6 @@
 
 ## 计算模型与基础理论
 
-### 计算模型基础
-
-
 
 ```latex bib
 @article{Lamport78,
@@ -54,7 +51,7 @@ publisher = {ACM},
 ```
 
 ```latex bib
-@inproceedings{Herlihy2011,
+@inproceedings{Herlihy11,
 author = {Herlihy, Maurice and Shavit, Nir},
 title = {On the Nature of Progress},
 booktitle = {Proceedings of the 15th International Conference on Principles of Distributed Systems},
@@ -68,7 +65,6 @@ url = {http://dx.doi.org/10.1007/978-3-642-25873-2_22 },
 }
 ```
 
-### 共享存储理论
 
 ```latex bib
 Lamport 提出 atomic/regular/safe registers 的概念 (Part I: Basic formalism)
@@ -220,8 +216,8 @@ publisher = {ACM},
 ```
 
 
-
 ## 重要问题与经典算法
+
 
 ```
 Lamport's Bakery 算法
