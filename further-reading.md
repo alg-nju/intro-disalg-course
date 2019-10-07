@@ -251,6 +251,29 @@ Lamport的Paxos算法
 }
 ```
 
+```
+failure detector的概念
+
+@article{Chandra96,
+ author = {Chandra, Tushar Deepak and Toueg, Sam},
+ title = {Unreliable Failure Detectors for Reliable Distributed Systems},
+ journal = {J. ACM},
+ issue_date = {March 1996},
+ volume = {43},
+ number = {2},
+ month = mar,
+ year = {1996},
+ issn = {0004-5411},
+ pages = {225--267},
+ numpages = {43},
+ url = {http://doi.acm.org/10.1145/226643.226647},
+ doi = {10.1145/226643.226647},
+ acmid = {226647},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Byzantine Generals' problem, agreement problem, asynchronous systems, atomic broadcast, commit problem, consensus problem, crash failures, failure detection, fault-tolerance, message passing, partial synchrony, processor failures},
+}
+```
 
 
 ### 不可能性结果
@@ -277,6 +300,8 @@ address = {New York, NY, USA},
 ```
 
 ```
+这本书讲得比原始论文要好懂一些。一个证明，如果书上有的话，可以先看书上的证明，再去看原文
+
 @book{Attiya14,
  author = {Attiya, Hagit and Ellen, Faith},
  title = {Impossibility Results for Distributed Computing},
@@ -306,6 +331,20 @@ address = {New York, NY, USA},
 
 
 ## 形式化规约与验证
+
+```
+@InProceedings{Maric17,
+ author="Mari{\'{c}}, Ognjen and Sprenger, Christoph and Basin, David",
+ editor="Majumdar, Rupak and Kun{\v{c}}ak, Viktor",
+ title="Cutoff Bounds for Consensus Algorithms",
+ booktitle="Computer Aided Verification",
+ year="2017",
+ publisher="Springer International Publishing",
+ address="Cham",
+ pages="217--237",
+ isbn="978-3-319-63390-9"
+}
+```
 
 ### 模型检验
 
