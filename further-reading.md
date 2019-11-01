@@ -299,6 +299,29 @@ address = {New York, NY, USA},
 } 
 ```
 
+细分了同步、异步的所有要素，看哪些对于consensus是必须的
+```
+@article{Dolev87,
+ author = {Dolev, Danny and Dwork, Cynthia and Stockmeyer, Larry},
+ title = {On the Minimal Synchronism Needed for Distributed Consensus},
+ journal = {J. ACM},
+ issue_date = {Jan. 1987},
+ volume = {34},
+ number = {1},
+ month = jan,
+ year = {1987},
+ issn = {0004-5411},
+ pages = {77--97},
+ numpages = {21},
+ url = {http://doi.acm.org/10.1145/7531.7533},
+ doi = {10.1145/7531.7533},
+ acmid = {7533},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+}
+```
+
+
 ```
 这本书讲得比原始论文要好懂一些。一个证明，如果书上有的话，可以先看书上的证明，再去看原文
 
