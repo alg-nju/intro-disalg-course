@@ -251,6 +251,28 @@ Lamport的Paxos算法
 }
 ```
 
+
+```
+Raft算法，在可理解性与易实现性方面，对Paxos做了改进
+
+@inproceedings{Ongaro14,
+ author = {Ongaro, Diego and Ousterhout, John},
+ title = {In Search of an Understandable Consensus Algorithm},
+ booktitle = {Proceedings of the 2014 USENIX Conference on USENIX Annual Technical Conference},
+ series = {USENIX ATC'14},
+ year = {2014},
+ isbn = {978-1-931971-10-2},
+ location = {Philadelphia, PA},
+ pages = {305--320},
+ numpages = {16},
+ url = {http://dl.acm.org/citation.cfm?id=2643634.2643666},
+ acmid = {2643666},
+ publisher = {USENIX Association},
+ address = {Berkeley, CA, USA},
+} 
+```
+
+
 ```
 failure detector的概念
 
