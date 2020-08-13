@@ -1,0 +1,189 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{CDG{\etalchar{+}}08}
+
+\bibitem[Aba12]{Abadi12}
+Daniel~J. Abadi.
+\newblock Consistency tradeoffs in modern distributed database system design:
+  Cap is only part of the story.
+\newblock {\em Computer}, 45(2):37--42, Feb 2012.
+
+\bibitem[ABND95]{Attiya95}
+Hagit Attiya, Amotz Bar-Noy, and Danny Dolev.
+\newblock Sharing memory robustly in message-passing systems.
+\newblock {\em J. ACM}, 42(1):124--142, January 1995.
+
+\bibitem[AE14]{Attiya14}
+Hagit Attiya and Faith Ellen.
+\newblock {\em Impossibility Results for Distributed Computing}.
+\newblock Morgan \& Claypool, 2014.
+
+\bibitem[BBC{\etalchar{+}}11]{Baker11}
+Jason Baker, Chris Bond, James~C. Corbett, JJ~Furman, Andrey Khorlin, James
+  Larson, Jean-Michel Leon, Yawei Li, Alexander Lloyd, and Vadim Yushprakh.
+\newblock Megastore: providing scalable, highly available storage for
+  interactive services.
+\newblock In {\em Proc. CIDR'11, Conference on Innovative Data System
+  Research}, pages 223--234, 2011.
+
+\bibitem[Bur06]{Burrows06}
+Mike Burrows.
+\newblock The {Chubby} lock service for loosely-coupled distributed systems.
+\newblock In {\em Proc. OSDI'06, USENIX Symposium on Operating Systems Design
+  and Implementation}, pages 335--350. USENIX, 2006.
+
+\bibitem[Bur14]{Burckhardt14-book}
+Sebastian Burckhardt.
+\newblock Principles of eventual consistency.
+\newblock {\em Found. Trends Program. Lang.}, 1(1–2):1–150, October 2014.
+
+\bibitem[CBPS10]{Charron10}
+Bernadette Charron-Bost, Fernando Pedone, and Andr\'{e} Schiper, editors.
+\newblock {\em Replication: Theory and Practice}.
+\newblock Springer-Verlag, Berlin, Heidelberg, 2010.
+
+\bibitem[CDE{\etalchar{+}}12]{Corbett12}
+James~C. Corbett, Jeffrey Dean, Michael Epstein, Andrew Fikes, Christopher
+  Frost, J.~J. Furman, Sanjay Ghemawat, Andrey Gubarev, Christopher Heiser,
+  Peter Hochschild, Wilson Hsieh, Sebastian Kanthak, Eugene Kogan, Hongyi Li,
+  Alexander Lloyd, Sergey Melnik, David Mwaura, David Nagle, Sean Quinlan,
+  Rajesh Rao, Lindsay Rolig, Yasushi Saito, Michal Szymaniak, Christopher
+  Taylor, Ruth Wang, and Dale Woodford.
+\newblock Spanner: {Google's} globally-distributed database.
+\newblock In {\em Proc. OSDI'12, USENIX Symposium on Operating Systems Design
+  and Implementation}, pages 251--264. USENIX, 2012.
+
+\bibitem[CDG{\etalchar{+}}08]{Chang08}
+Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson~C. Hsieh, Deborah~A. Wallach,
+  Mike Burrows, Tushar Chandra, Andrew Fikes, and Robert~E. Gruber.
+\newblock Bigtable: A distributed storage system for structured data.
+\newblock {\em ACM Trans. Comput. Syst.}, 26(2):4:1--4:26, June 2008.
+
+\bibitem[CG18]{Cerone18}
+Andrea Cerone and Alexey Gotsman.
+\newblock Analysing snapshot isolation.
+\newblock {\em J. ACM}, 65(2), January 2018.
+
+\bibitem[CGR07]{Chandra07}
+Tushar~D. Chandra, Robert Griesemer, and Joshua Redstone.
+\newblock Paxos made live: An engineering perspective.
+\newblock In {\em Proceedings of the Twenty-sixth Annual ACM Symposium on
+  Principles of Distributed Computing}, PODC '07, pages 398--407. ACM, 2007.
+
+\bibitem[CT96]{Chandra96}
+Tushar~Deepak Chandra and Sam Toueg.
+\newblock Unreliable failure detectors for reliable distributed systems.
+\newblock {\em J. ACM}, 43(2):225--267, March 1996.
+
+\bibitem[DHJ{\etalchar{+}}07]{DeCandia07}
+Giuseppe DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan Kakulapati,
+  Avinash Lakshman, Alex Pilchin, Swaminathan Sivasubramanian, Peter Vosshall,
+  and Werner Vogels.
+\newblock Dynamo: Amazon's highly available key-value store.
+\newblock In {\em Proceedings of Twenty-first ACM SIGOPS Symposium on Operating
+  Systems Principles}, SOSP '07, pages 205--220. ACM, 2007.
+
+\bibitem[FLP85]{Fischer85}
+Michael~J. Fischer, Nancy~A. Lynch, and Michael~S. Paterson.
+\newblock Impossibility of distributed consensus with one faulty process.
+\newblock {\em J. ACM}, 32(2):374--382, April 1985.
+
+\bibitem[Gel85]{Gelernter85}
+David Gelernter.
+\newblock Generative communication in linda.
+\newblock {\em ACM Trans. Program. Lang. Syst.}, 7(1):80--112, January 1985.
+
+\bibitem[GL12]{Gilbert12}
+Seth Gilbert and Nancy~A. Lynch.
+\newblock Perspectives on the cap theorem.
+\newblock {\em Computer}, 45(2):30--36, 2012.
+
+\bibitem[Her91]{Herlihy91}
+Maurice Herlihy.
+\newblock Wait-free synchronization.
+\newblock {\em ACM Trans. Program. Lang. Syst.}, 13(1):124--149, January 1991.
+
+\bibitem[HKJR10]{Hunt10}
+Patrick Hunt, Mahadev Konar, Flavio~P. Junqueira, and Benjamin Reed.
+\newblock {ZooKeeper}: wait-free coordination for internet-scale systems.
+\newblock In {\em Proc. ATC'10, USENIX Annual Technical Conference}, pages
+  145--158. USENIX, 2010.
+
+\bibitem[HS11]{Herlihy11}
+Maurice Herlihy and Nir Shavit.
+\newblock On the nature of progress.
+\newblock In {\em Proceedings of the 15th International Conference on
+  Principles of Distributed Systems}, OPODIS'11, pages 313--328, 2011.
+
+\bibitem[HW90]{Herlihy90}
+Maurice~P. Herlihy and Jeannette~M. Wing.
+\newblock Linearizability: a correctness condition for concurrent objects.
+\newblock {\em ACM Transactions on Programming Languages and Systems},
+  12:463--492, July 1990.
+
+\bibitem[Lam74]{Lamport74}
+Leslie Lamport.
+\newblock A new solution of dijkstra's concurrent programming problem.
+\newblock {\em Commun. ACM}, 17(8):453--455, August 1974.
+
+\bibitem[Lam78]{Lamport78}
+Leslie Lamport.
+\newblock Time, clocks, and the ordering of events in a distributed system.
+\newblock {\em Commun. ACM}, 21(7):558--565, 1978.
+
+\bibitem[Lam86a]{Lamport86a}
+Leslie Lamport.
+\newblock On interprocess communication. part i: Basic formalism.
+\newblock {\em Distributed Computing}, 1(2):77--85, 1986.
+
+\bibitem[Lam86b]{Lamport86b}
+Leslie Lamport.
+\newblock On interprocess communication. part ii: Algorithms.
+\newblock {\em Distributed Computing}, 1(2):86--101, 1986.
+
+\bibitem[Lam01]{Lamport01}
+Leslie Lamport.
+\newblock Paxos made simple.
+\newblock {\em ACM SIGACT News (Distributed Computing Column) 32, 4 (Whole
+  Number 121, December 2001)}, pages 51--58, December 2001.
+
+\bibitem[LH89]{Li89}
+Kai Li and Paul Hudak.
+\newblock Memory coherence in shared virtual memory systems.
+\newblock {\em ACM Trans. Comput. Syst.}, 7(4):321--359, November 1989.
+
+\bibitem[LM10]{Lakshman10}
+Avinash Lakshman and Prashant Malik.
+\newblock Cassandra: A decentralized structured storage system.
+\newblock {\em SIGOPS Oper. Syst. Rev.}, 44(2):35--40, April 2010.
+
+\bibitem[Mat89]{Mattern89}
+Friedemann Mattern.
+\newblock Virtual time and global states of distributed systems.
+\newblock In {\em Proc. International Workshop on Parallel and Distributed
+  Algorithms}, pages 215--226, Holland, 1989.
+
+\bibitem[Mis86]{Misra86}
+J.~Misra.
+\newblock Axioms for memory access in asynchronous hardware systems.
+\newblock {\em ACM Trans. Program. Lang. Syst.}, 8(1):142--153, January 1986.
+
+\bibitem[MSB17]{Maric17}
+Ognjen Mari{\'{c}}, Christoph Sprenger, and David Basin.
+\newblock Cutoff bounds for consensus algorithms.
+\newblock In Rupak Majumdar and Viktor Kun{\v{c}}ak, editors, {\em Computer
+  Aided Verification}, pages 217--237, Cham, 2017. Springer International
+  Publishing.
+
+\bibitem[OO14]{Ongaro14}
+Diego Ongaro and John Ousterhout.
+\newblock In search of an understandable consensus algorithm.
+\newblock In {\em Proceedings of the 2014 USENIX Conference on USENIX Annual
+  Technical Conference}, USENIX ATC'14, pages 305--320, Berkeley, CA, USA,
+  2014. USENIX Association.
+
+\bibitem[SWPL11]{Shao11}
+Cheng Shao, Jennifer~L. Welch, Evelyn Pierce, and Hyunyoung Lee.
+\newblock Multiwriter consistency conditions for shared memory registers.
+\newblock {\em SIAM J. Comput.}, 40(1):28--62, January 2011.
+
+\end{thebibliography}
