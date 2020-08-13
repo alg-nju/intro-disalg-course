@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.6.18)  13 AUG 2020 10:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.6.18)  13 AUG 2020 10:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -407,10 +407,48 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 25.
 Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (
 quanjiao) on input line 25.
- [1
 
-]
-(./disalg-readling.toc)
+Underfull \hbox (badness 2343) in paragraph at lines 25--25
+[][]\C70/rm/m/n/9.03374/8f Ù \C70/rm/m/n/9.03374/66 / \C70/rm/m/n/9.03374/52 ^^
+F \C70/rm/m/n/9.03374/5e ^^C \C70/rm/m/n/9.03374/5f ^^O \C70/rm/m/n/9.03374/7b 
+— \C70/rm/m/n/9.03374/6c Õ \C70/rm/m/n/9.03374/8b þ \C70/rm/m/n/9.03374/7a  \C
+70/rm/m/n/9.03374/63 ¨ \C70/rm/m/n/9.03374/83 P \C70/rm/m/n/9.03374/59 ' \C70/r
+m/m/n/9.03374/5b ¶ \C70/rm/m/n/9.03374/5e ö \C70/rm/m/n/9.03374/4f 8 \C70/rm/m/
+n/9.03374/96 ^^E \C70/rm/m/n/9.03374/8b û \C70/rm/m/n/9.03374/76 „ \C70/rm/m/n/
+9.03374/65 ‡ \C70/rm/m/n/9.03374/73 .|\C70/rm/m/n/9.03374/30 ^^B| \C70/rm/m/n/9
+.03374/8f Ù \C70/rm/m/n/9.03374/4e * \C70/rm/m/n/9.03374/65 ‡ \C70/rm/m/n/9.033
+74/73 . \C70/rm/m/n/9.03374/52 ^^W \C70/rm/m/n/9.03374/88 h \C70/rm/m/n/9.03374
+/4f ^^Z \C70/rm/m/n/9.03374/57 ( \C70/rm/m/n/9.03374/5e s \C70/rm/m/n/9.03374/6
+5 ö \C70/rm/m/n/9.03374/4e ^^M \C70/rm/m/n/9.03374/65 ­ \C70/rm/m/n/9.03374/66 
+ô \C70/rm/m/n/9.03374/65 ° \C70/rm/m/n/9.03374/8c ^^C \C70/rm/m/n/9.03374/65 t|
+\C70/rm/m/n/9.03374/ff ^^L| \C70/rm/m/n/9.03374/53 ^^E \C70/rm/m/n/9.03374/62 ì
+ \C70/rm/m/n/9.03374/58 ž \C70/rm/m/n/9.03374/52   \C70/rm/m/n/9.03374/67 a \C7
+0/rm/m/n/9.03374/76 î|\C70/rm/m/n/9.03374/30 ^^A| \C70/rm/m/n/9.03374/4f î \C70
+/rm/m/n/9.03374/65 9
+ []
+
+
+Underfull \hbox (badness 3884) in paragraph at lines 25--25
+\C70/rm/m/n/9.03374/6c è \C70/rm/m/n/9.03374/91 Ê|\C70/rm/m/n/9.03374/30 ^^A| \
+C70/rm/m/n/9.03374/8c ^^C \C70/rm/m/n/9.03374/65 t ‡ \C70/rm/m/n/9.03374/68 c \
+C70/rm/m/n/9.03374/76 „ î \C70/rm/m/n/9.03374/5f U \C70/rm/m/n/9.03374/7e Ó \C7
+0/rm/m/n/9.03374/67 „ \C70/rm/m/n/9.03374/7b I|\C70/rm/m/n/9.03374/30 ^^B| \C70
+/rm/m/n/9.03374/8f Ù \C70/rm/m/n/9.03374/4e › \C70/rm/m/n/9.03374/65 ‡ \C70/rm/
+m/n/9.03374/73 . \C70/rm/m/n/9.03374/4e ^^M \C70/rm/m/n/9.03374/66 / \C70/rm/m/
+n/9.03374/4e ^^@ * \C70/rm/m/n/9.03374/51 E \C70/rm/m/n/9.03374/52 ^^F \C70/rm/
+m/n/9.03374/76 „ \C70/rm/m/n/9.03374/89 † \C70/rm/m/n/9.03374/76 Ö|\C70/rm/m/n/
+9.03374/ff ^^L| \C70/rm/m/n/9.03374/66 ô \C70/rm/m/n/9.03374/50 Ï \C70/rm/m/n/9
+.03374/66 / \C70/rm/m/n/9.03374/4e ^^@ › \C70/rm/m/n/9.03374/7e Ï \C70/rm/m/n/9
+.03374/51 x \C70/rm/m/n/9.03374/65 ‡ \C70/rm/m/n/9.03374/73 . \C70/rm/m/n/9.033
+74/76 „ \C70/rm/m/n/9.03374/4f ‹ \C70/rm/m/n/9.03374/4e >|\C70/rm/m/n/9.03374/3
+0 ^^B| \C70/rm/m/n/9.03374/67 ^^@ \C70/rm/m/n/9.03374/65 ° \C70/rm/m/n/9.03374/
+72 H \C70/rm/m/n/9.03374/67 , \C70/rm/m/n/9.03374/8b ÷ \C70/rm/m/n/9.03374/53 Â
+ \C70/rm/m/n/9.03374/80 ^^C
+ []
+
+[1
+
+] (./disalg-readling.toc)
 \tf@toc=\write3
 \openout3 = `disalg-readling.toc'.
 
@@ -448,11 +486,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ] [9]) [10] (./disalg-readling.aux) ) 
 Here is how much of TeX's memory you used:
- 6216 strings out of 480478
- 122276 string characters out of 5903485
+ 6235 strings out of 480478
+ 122566 string characters out of 5903485
  346261 words of memory out of 5000000
- 21915 multiletter control sequences out of 15000+600000
- 576693 words of font info for 184 fonts, out of 8000000 for 9000
+ 21929 multiletter control sequences out of 15000+600000
+ 577503 words of font info for 187 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,7n,67p,483b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/Windows/Fonts/simsun.ttc><c:/Windows/F
@@ -464,12 +502,12 @@ s/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
 :/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsu
 n.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fon
 ts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Win
-dows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf
+dows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf
 ><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/si
 mhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/
 Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/
-Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.
-ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts
+Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.
+ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts
 /simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windo
 ws/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><
 c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/sims
@@ -482,20 +520,21 @@ imsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows
 /Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun
 .ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Font
 s/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Wind
-ows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf>
+ows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf>
 <c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/sim
 hei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/F
-onts/simhei.ttf><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d
-:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/
-2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2020/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2020/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb>
-Output written on disalg-readling.pdf (11 pages, 422562 bytes).
+onts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><d:/t
+exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/20
+20/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2020/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2020/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2020/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on disalg-readling.pdf (11 pages, 444162 bytes).
 PDF statistics:
- 448 PDF objects out of 1000 (max. 8388607)
- 290 compressed objects within 3 object streams
+ 462 PDF objects out of 1000 (max. 8388607)
+ 299 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 225 words of extra memory for PDF output out of 10000 (max. 10000000)
 
