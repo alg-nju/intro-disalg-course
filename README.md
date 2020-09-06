@@ -2,7 +2,9 @@
 
 Introduction to Distributed Algorithms
 
-授课教师：黄宇 (http://cs.nju.edu.cn/yuhuang)
+授课教师：黄宇
+* http://cs.nju.edu.cn/yuhuang
+* https://zhuanlan.zhihu.com/algocentric
 
 
 ## 课程延伸阅读
