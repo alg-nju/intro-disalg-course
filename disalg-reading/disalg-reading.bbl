@@ -77,6 +77,14 @@ Corbett, J.~C., Dean, J., Epstein, M., Fikes, A., Frost, C., Furman, J.~J.,
 \newblock In {\em Proc. OSDI'12, USENIX Symposium on Operating Systems Design
   and Implementation}, pages 251--264. USENIX.
 
+\bibitem[Crooks et~al., 2017]{Crooks17}
+Crooks, N., Pu, Y., Alvisi, L., and Clement, A. (2017).
+\newblock Seeing is believing: A client-centric specification of database
+  isolation.
+\newblock In {\em Proceedings of the ACM Symposium on Principles of Distributed
+  Computing}, PODC'17, page 73–82, New York, NY, USA. Association for
+  Computing Machinery.
+
 \bibitem[DeCandia et~al., 2007]{DeCandia07}
 DeCandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin,
   A., Sivasubramanian, S., Vosshall, P., and Vogels, W. (2007).

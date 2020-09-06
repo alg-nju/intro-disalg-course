@@ -1,6 +1,12 @@
 This is BibTeX, Version 0.99d (TeX Live 2020/W32TeX)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: disalg-reading.aux
+A level-1 auxiliary file: ./MainText/Model.aux
+A level-1 auxiliary file: ./MainText/Impo.aux
+A level-1 auxiliary file: ./MainText/Msg.aux
+A level-1 auxiliary file: ./MainText/Shm.aux
+A level-1 auxiliary file: ./MainText/Sys.aux
+A level-1 auxiliary file: ./MainText/Fm.aux
 The style file: apalike.bst
 Database file #1: disalg-reading.bib
 I was expecting a `,' or a `}'---line 107 of file disalg-reading.bib
@@ -8,50 +14,50 @@ I was expecting a `,' or a `}'---line 107 of file disalg-reading.bib
  :     URL = {http://www.cidrdb.org/cidr2011/Papers/CIDR11_Paper32.pdf},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting an "="---line 873 of file disalg-reading.bib
+I was expecting an "="---line 913 of file disalg-reading.bib
  : 
  : %-- mar
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 33 entries,
+You've used 34 entries,
             1935 wiz_defined-function locations,
-            705 strings with 9506 characters,
-and the built_in function-call counts, 15398 in all, are:
-= -- 1538
-> -- 635
-< -- 33
-+ -- 223
-- -- 218
-* -- 1298
-:= -- 2558
-add.period$ -- 106
-call.type$ -- 33
-change.case$ -- 271
-chr.to.int$ -- 32
-cite$ -- 33
-duplicate$ -- 600
-empty$ -- 1081
-format.name$ -- 269
-if$ -- 3115
+            718 strings with 9858 characters,
+and the built_in function-call counts, 15975 in all, are:
+= -- 1600
+> -- 658
+< -- 34
++ -- 231
+- -- 226
+* -- 1336
+:= -- 2643
+add.period$ -- 110
+call.type$ -- 34
+change.case$ -- 280
+chr.to.int$ -- 33
+cite$ -- 34
+duplicate$ -- 633
+empty$ -- 1118
+format.name$ -- 278
+if$ -- 3246
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 34
-newline$ -- 168
-num.names$ -- 102
-pop$ -- 238
+missing$ -- 35
+newline$ -- 173
+num.names$ -- 105
+pop$ -- 248
 preamble$ -- 1
-purify$ -- 273
+purify$ -- 282
 quote$ -- 0
-skip$ -- 475
+skip$ -- 505
 stack$ -- 0
-substring$ -- 1152
-swap$ -- 130
-text.length$ -- 11
+substring$ -- 1178
+swap$ -- 146
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 194
+type$ -- 200
 warning$ -- 0
-while$ -- 131
+while$ -- 134
 width$ -- 0
-write$ -- 444
+write$ -- 460
 (There were 2 error messages)
