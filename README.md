@@ -9,4 +9,4 @@ Introduction to Distributed Algorithms
 
 ## 课程延伸阅读
 
-请参考“\disalg-reading\disalg-reading.pdf”中列出的经典文献。
+请参考“\课程文献阅读\disalg-reading.pdf”中列出的经典文献。

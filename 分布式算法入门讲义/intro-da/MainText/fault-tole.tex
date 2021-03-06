@@ -1,0 +1,27 @@
+%--
+\chapter{容错与可靠性}
+
+%----------------------------------------
+\section{理解failure}
+
+从节点的视角。crash failure。Byzantine failure。
+
+\myleaf 经典的共识协议Paxos\cite{Lamport01}、VR\cite{Oki88}，它们容忍的是crash failure。其中，VR扩展出了经典的拜占庭容错的共识协议PBFT \cite{Castro02}。
+
+
+
+从网络连接的视角。
+
+\myleaf \cite{Lynch96-textbook}第5章，容忍link failure的协同攻击问题。
+
+\myleaf 大量真实但是anecdotal案例的精彩讲述 \cite{Bailis14-cacm}。基于大量开源项目bug report分析partial partition \cite{Alfatafta20}。
+
+%----------------------------------------
+\section{发现failure}
+
+%----------------------------------------
+\section{容忍failure}
+
+错误自动注入技术。
+
+\myleaf \cite{Alvaro18}。
