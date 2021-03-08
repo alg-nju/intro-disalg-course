@@ -7,6 +7,6 @@ Introduction to Distributed Algorithms
 * https://zhuanlan.zhihu.com/algocentric
 
 
-## 课程延伸阅读
+## 课程文献阅读
 
 请参考“\课程文献阅读\disalg-reading.pdf”中列出的经典文献。
