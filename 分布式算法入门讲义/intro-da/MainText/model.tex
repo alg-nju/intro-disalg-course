@@ -3,17 +3,21 @@
 
 分布式系统的基础知识。
 
-\myleaf 分布式系统的经典教科书 \cite{Tanenbaum06}。
+\myleaf 分布式系统的经典教科书 \cite{Tanenbaum06}。\\
 
 形式化验证的基础知识
 
-\myleaf 数理逻辑与软件形式化验证基础知识 \cite{Huth04}。
+\myleaf 数理逻辑与软件形式化验证基础知识 \cite{Huth04}。\\
+
+TLA+
 
 \myleaf TLA+的基础知识 \footnote{Leslie Lamport, The TLA+ Home Page: http://lamport.azurewebsites.net/tla/tla.html}。
 
+\myleaf TLA+教程 \cite{Wayne18}。\\
+
 分布式系统的形式化验证的工业界实践。
 
-\myleaf Amazon的实践 \cite{Newcombe15}。
+\myleaf Amazon的实践 \cite{Newcombe15}。\\
 
 面向教学的分布式算法快速实现。
 
@@ -87,28 +91,22 @@
 问题之间的归约(reduction)。
 
 
-
-
-
-%--
-\chapter{经典问题}
-
 %--------------------------------------------------------------------------------
-\section{分布共识}
+\section{消息传递模型}
 
-分布共识问题。相关工作很多，此处先介绍基本问题，和朴素的算法。后面分多个专题讨论分布共识方面的经典工作。
+%----------------------------------------
+\subsection{同步}
 
-\myleaf 蛮力算法：\cite{Attiya04}第5章，问题的定义，和一个容忍crash failure的同步系统的$f+1$轮蛮力算法。
-
-\myleaf 经典算法：经典的共识协议Paxos\cite{Lamport01}、VR\cite{Oki88}。
-
-\myleaf 后续变体：ZK \cite{Junqueira11}，Raft \cite{Ongaro14}。
+%----------------------------------------
+\subsection{异步}
 
 
 %--------------------------------------------------------------------------------
-\section{原子性事务提交}
+\section{共享内存模型}
 
-原子性事务提交(ATC, Atomic Transaction Commit)。
+
+
+
 
 
 
