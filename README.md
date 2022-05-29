@@ -7,6 +7,12 @@ Introduction to Distributed Algorithms
 * https://zhuanlan.zhihu.com/algocentric
 
 
+## 分布式算法讲义
+
+讲义在持续写作中。
+
+当前内容请参考“/lecture-notes/disalg-lecture-notes.pdf”
+
 ## 课程文献阅读
 
-请参考“\课程文献阅读\disalg-reading.pdf”中列出的经典文献。
+请参考“/further-readings/disalg-reading.pdf”中列出的经典文献。
