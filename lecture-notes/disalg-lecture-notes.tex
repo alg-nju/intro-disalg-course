@@ -49,6 +49,9 @@
 
 这是一个基本的定位问题。这本讲义，主要还是将分布式算法当一个软件对象来看，主要面向的是分布式系统的建设者，特别是有一定的实践经验，理论基础比较薄弱的建设者。里面有一些理论性的结果与讨论，也被看作分布式系统构建的further reading。
 
+根据我与系统软件开发人员的接触，以及看他们在网络发布的技术内容，我发现有一部分分布式系统软件开发人员，基本概念不够清晰，相对严谨的建模与论证能力尚有不足。
+从我的角度而言，目前分布式算法课本是缺位的，一些翻译的国外经典教科书，对于分布式系统开发人员也是不太合适的。希望（未来）本书的内容能对他们有所帮助。
+
 此外，在校的同学，从本科生的算法课一路学下来，学了分布式算法的基本概念，再去实际分布式系统的构建中去深入体会，也是可以的。
 每年招新学生的时候，分布式算法知识的入门是一个反复出现的任务。一般而言，分布式算法知识和大家的本科课程距离较远，难以自然地衔接。分布式算法的经典课本、论文在本科毕业的时候直接阅读往往比较困难。另外一方面，网上相关技术内容不少，但是质量堪忧，有误导性的“负作用”。为此陆续整理这一本讲义，希望能将每年重复给新学生罗列的学习内容沉淀下来，复用起来。
 
@@ -59,10 +62,12 @@
 %----------------------------------------
 \part{分布式系统建模}
 
-这一部分讲解计算模型等基本概念。
+这一部分讲解计算模型的基本概念。
+
+这一部分还讲解分布式算法的正确性规约，它脱胎于分布式系统设计的需求规约。
 
 %--------------------
-\chapter{计算模型}
+\chapter{抽象计算模型的概念}
 
 %----------
 \section{基本模型}
@@ -90,7 +95,7 @@
 这一编程抽象的视角，对于系统学习分布式系统理论而言，是非常有帮助的。对于实际开发者而言，它的主要意义在于将核心的概念，层层解构，辨析清楚。
 
 %--------------------
-\chapter{正确性规约}
+\chapter{分布式算法正确性的严格规约}
 
 本科生算法课中讨论的正确性规约，是必要的基础。基于此，我们可以发现这一规约对于讨论分布式系统做的对不对，是不够的。
 
@@ -104,7 +109,15 @@
 
 这部分讲解MSG模型上经典的分布式算法问题。
 
-%--------------------
+
+%============================================================
+\chapter{MSG模型}
+
+第一章主要是介绍基本概念。
+
+MSG模型的技术细节，拓展性讨论将在此展开。
+
+%============================================================
 \chapter{领导者选举问题}
 
 领导者选举问题（Leader Election，LE）是一个很重要的理论、技术问题。
@@ -168,6 +181,65 @@ VR本身不是太有名，或者说风头完全被Paxos盖住。但是对于拜�
 
 这一段历史，Liskov在\cite[Chp. 7]{Charron10}中自己有简要论述。
 
+
+
+%--------------------
+\chapter{Distributed Computation的观察与理解}
+
+%----------
+\section{观察：Snapshot集合的格结构}
+
+理解、构建一个异步MSG系统，一个重要的观念的跃迁，是从“绝对的、全序的时钟观”变成“相对的、偏序的时钟观”。形成这种异步分布时钟观的核心是消息传递的因果关系蕴含的时序happen-before关系和异步系统中时刻的概念：分布异步系统的consistent global snapshot。
+
+作为准备知识，需要读者对离散数学中学的偏序关系、格结构，有较为深入的了解。我为本科生通识课，做过一次相关的报告，可供参考：偏序集与格理论-及其在分布式系统中的应用\footnote{https://www.bilibili.com/video/BV1iU4y1M7SU/}。
+
+异步分布式消息传递系统的执行轨迹（称之以为一个distributed computation，也有很多其它名称），天然自带happen-before关系，基于这一关系可以定义系统的consistent global snapshot，而系统的所有snapshot集合，具有格结构。
+
+这一happen-before关系的定义参见Lamport奠基性的论文[Lamport78]。这一happen-before关系可以用各种不同的逻辑时钟来表示。各种逻辑时钟机制，可以看成是表示偏序关系的代价和表示偏序关系的能力之间的权衡。虽然Lamport那篇奠基性的论文名气很大，但是学习逻辑时钟，建议从最标准、表达能力最强、代价最大的vector clock入手[Mattern89]。
+
+了解happen-before关系及其vector clock编码之后，就可以正式理解distributed computation中的snapshot和snapshot之间的格结构，主要参见[Mattern89]和[Babaoglu93]。
+
+%----------
+\section{理解：全局谓词的规约和检测}
+
+把distributed computation的格结构刻画清楚之后，就可以从中提取观察者所感兴趣的信息。观察者所关注的，distributed computation所具有的性质，可以形式化规约为一个全局谓词（global predicate），每个谓词有相应的检测算法。
+
+基于上面的准备，观察和理解distributed computation的基本过程是：
+
+%--
+\begin{itemize}
+    \item 观察系统执行，得到trace。
+    \item 解析用户规约的全局谓词。
+    \item 在trace上检测谓词的成立情况。
+\end{itemize}
+
+谓词规约和检测的一些初步知识参见[Chandy85, Cooper91, Babaoglu95]等。一篇关于global temporal谓词的更深刻的理论分析见[Charron95]。
+
+%我有一个面向本科生的通识课程报告，关于“偏序集与格理论在分布式系统中的应用”的，可供参考\footnote{https://www.bilibili.com/video/BV1iU4y1M7SU/}。
+
+%----------------------------------------
+\part{共享内存算法}
+
+这部分讲解SHM模型上经典的分布式算法问题。
+
+%============================================================
+\chapter{SHM模型}
+
+第一章主要是介绍基本概念。
+
+SHM模型的技术细节，拓展性讨论将在此展开。
+
+
+%--------------------
+\chapter{SHM一致性模型}
+
+[Attiya04, Chap 4]所讲解的SHM，其实是一个退化版。因为对shared register的更新是原子的，所以它其实讲的是SHM上的atomic register抽象。Atomic register是一个非常重要的抽象，它是深入理解SHM模型的支点。它的原始定义参考[Lamport86a, Lamport86b]。
+
+在MSG模型上，模拟出SHM模型中的atomic register抽象，是分布共享内存DSM中的经典问题。所以在一些DSM的经典工作中，也可以读到atomic register的定义，而且读起来可能比SHM相关文献中的定义还好懂一些，包括Attiya的DSM奠基性工作[Attiya95]，Welch关于multi-writer情况的讨论[Shao11]，atomic register fast access下界证明的经典工作[Dutta10]，也包括我们自己下界证明的工作[Huang20]和ASC( Almost Strong Consistency)的工作[Wei17, Ouyang21]。
+
+有了atomic register抽象的铺垫之后，可以更深入地了解SHM的一致性模型，包括带时间的atomic/regular/safe registers [Lamport86a, Lamport86b, Shao11]。还包括不带时间的各种模型，及其背后的统一框架[Steinke04]。这个统一框架很深刻，把所有一致性模型都打碎，碎成乐高一样的原子块，进而所有模型都可以挑若干原子块搭建起来，并且通过上述解构，比较容易看出所有模型在强弱关键下，具有lattice结构。
+
+
 %--------------------
 \chapter{分布共享内存}
 
@@ -187,53 +259,6 @@ Atomic register可以进一步分为single-writer和multi-writer的情况。Sing
 
 不过早期的论文都比较难懂，相关领域深入研究的读者顶多可以看看[Attiya95]，[Lynch97]基本不用直接去看了。[Aspnes19, Chap 16]有提炼后的重新表述，从学习的角度而言，看课本就可以了，很多不必要的细节都被合理抛弃了。
 
-%--------------------
-\chapter{Distributed Computation的观察与理解}
-
-%----------
-\section{观察：Snapshot集合的格结构}
-
-理解、构建一个异步MSG系统，一个重要的观念的跃迁，是从“绝对的、全序的时钟观”变成“相对的、偏序的时钟观”。形成这种异步分布时钟观的核心是消息传递的因果关系蕴含的时序happen-before关系和异步系统中时刻的概念：分布异步系统的consistent global snapshot。
-
-作为准备知识，需要读者对离散数学中学的排序关系、格结构，有较为深入的了解。我为本科生通识课，做过一次相关的报告，可供参考：偏序集与格理论-及其在分布式系统中的应用 。
-
-异步分布式消息传递系统的执行轨迹（称之以为一个distributed computation，也有很多其它名称），天然自带happen-before关系，基于这一关系可以定义系统的consistent global snapshot，而系统的所有snapshot集合，具有格结构。
-
-这一happen-before关系的定义参见Lamport奠基性的论文[Lamport78]。这一happen-before关系可以用各种不同的逻辑时钟来表示。各种逻辑时钟机制，可以看成是表示偏序关系的代价和表示偏序关系的能力之间的权衡。虽然Lamport那篇奠基性的论文名气很大，但是学习逻辑时钟，建议从最标准、表达能力最强、代价最大的vector clock入手[Mattern89]。
-
-了解happen-before关系及其vector clock编码之后，就可以正式理解distributed computation中的snapshot和snapshot之间的格结构，主要参见[Mattern89]和[Babaoglu93]。
-
-%----------
-\section{理解：全局谓词的规约和检测}
-
-把distributed computation的格结构刻画清楚之后，就可以从中提取观察者所感兴趣的信息。观察者所关注的，distributed computation所具有的性质，可以形式化规约为一个全局谓词（global predicate），每个谓词有相应的检测算法。
-
-基于上面的准备，观察和理解distributed computation的基本形式是：
-
-%--
-\begin{itemize}
-    \item 观察系统执行，得到trace。
-    \item 解析用户规约的谓词。
-    \item 在trace上检测谓词的成立情况。
-\end{itemize}
-
-谓词规约和检测的一些初步知识参见[Chandy85, Cooper91, Babaoglu95]等。一篇关于global temporal谓词的更深刻的理论分析见[Charron95]。
-
-我有一个面向本科生的通识课程报告，关于“偏序集与格理论在分布式系统中的应用”的，可供参考\footnote{https://www.bilibili.com/video/BV1iU4y1M7SU/}。
-
-%----------------------------------------
-\part{共享内存算法}
-
-这部分讲解SHM模型上经典的分布式算法问题。
-
-%--------------------
-\chapter{Shared Memory Consistency}
-
-[Attiya04, Chap 4]所讲解的SHM，其实是一个退化版。因为对shared register的更新是原子的，所以它其实讲的是SHM上的atomic register抽象。Atomic register是一个非常重要的抽象，它是深入理解SHM模型的支点。它的原始定义参考[Lamport86a, Lamport86b]。
-
-在MSG模型上，模拟出SHM模型中的atomic register抽象，是分布共享内存DSM中的经典问题。所以在一些DSM的经典工作中，也可以读到atomic register的定义，而且读起来可能比SHM相关文献中的定义还好懂一些，包括Attiya的DSM奠基性工作[Attiya95]，Welch关于multi-writer情况的讨论[Shao11]，atomic register fast access下界证明的经典工作[Dutta10]，也包括我们自己下界证明的工作[Huang20]和ASC( Almost Strong Consistency)的工作[Wei17, Ouyang21]。
-
-有了atomic register抽象的铺垫之后，可以更深入地了解SHM的一致性模型，包括带时间的atomic/regular/safe registers [Lamport86a, Lamport86b, Shao11]。还包括不带时间的各种模型，及其背后的统一框架[Steinke04]。这个统一框架很深刻，把所有一致性模型都打碎，碎成乐高一样的原子块，进而所有模型都可以挑若干原子块搭建起来，并且通过上述解构，比较容易看出所有模型在强弱关键下，具有lattice结构。
 
 %--------------------
 \chapter{互斥问题}
@@ -243,7 +268,7 @@ Atomic register可以进一步分为single-writer和multi-writer的情况。Sing
 %----------
 \section{问题的定义}
 
-需要从safety和liveness两个侧面来理解MUTEX问题的定义。MUTEX其实不是一个确定的问题，而是一个问题族。一般它的safety部分没什么变化，而liveness部分却又种类繁多的变体。
+需要从safety和liveness两个侧面来理解MUTEX问题的定义。MUTEX其实不是一个确定的问题，而是一个问题族。一般它的safety部分没什么变化，而liveness部分有种类繁多的变体。
 
 要真正掌握MUTEX问题的定义，你得能够看懂别人精确定义的问题，并且能根据自己实际面对的问题，给出最合适的系统建模和问题定义。
 
@@ -263,11 +288,11 @@ MUTEX算法中，比较经典的是Lamport提出的Bakery算法。可以分几�
 
 %--
 \begin{itemize}
-    \item 协同的载体：首先理解进程$p_i$ own一个register的概念，或者说single-writer multi-reader register的妙用。每个proc拥有一个register，即只有我能写它，其他人都可以读。这样每个proc拥有一个register，大家就可以互相通过这些register比较自如地完成交流、协同。
+    \item 协同的载体：首先理解进程$p_i$拥有（own）一个register的概念，或者说single-writer multi-reader register的妙用。每个proc拥有一个register，即只有我能写它，其他人都可以读。这样每个proc拥有一个register，大家就可以互相通过这些register比较自如地完成交流、协同。
     
     \item 取号机制的SHM实现：基于上述概念，就让每个proc类似银行排队取号一样，等待进入临界区。只不过这里的取号是通过每个进程 $p_i$ 都拥有的register来实现的。每个proc看看别人的号，就知道自己取号要取所有号里最大号的下一个号。
     
-    \item 承诺我主意不改了：上述取号机制的基本原理是对的，但是有比较直觉的漏洞。根据adversary argument的视角（adversary argument的基本概念可以参考我本科生算法课的L7），别人一读到我own的register，我就恶意地去改它，这是可以让上述机制出错的。为此我们课上直接构造了一个这样的例子。所以需要进一步引入一个类似承诺的概念，就是“买定离手”，我不改了。这个机制是通过让每个proc own一个flag register $Choosing_i$ 来实现的。
+    \item 承诺我主意不改了：上述取号机制的基本原理是对的，但是有比较直觉的漏洞。根据adversary argument的视角（adversary argument的基本概念可以参考我本科生算法课的L7），别人一读到我own的register，我就恶意地去改它，这是可以让上述机制出错的。为此我们课上直接构造了一个这样的例子。所以需要进一步引入一个类似承诺的概念，就是“买定离手”，我不改了。这个机制是通过让每个proc拥有一个flag register $Choosing_i$ 来实现的。
     
 \end{itemize}
 
@@ -305,7 +330,7 @@ Bakery算法在一个维度有明显的问题，即它要求register能存任意
 
 当你熟悉分布式算法、分布式系统的基本概念，对它们有一点宏观性的思考的时候，一个很重要的概念就是分布式算法、分布式系统中的基本的不可能性结果。
 
-早在89年的PODC上，Lynch就survey了“A hundred impossibility proofs for distributed computing”[Lynch89]，到了03年，Faith Ellen（与人合作）又写了“Hundreds of impossibility results for distributed computing”[Fich2003]。最终到了14年，Hagit Attiya和Faith Ellen汇聚成书“Impossibility Results for Distributed Computing”[Attiya14]\footnote{上述理论结果背后一个有趣的现象是，上面所提到的作者都是女性，分布式算法领域两本教科书的作者也是女性，她们的女性学生后续也在分布式理论领域做出了出色的结果。}。
+早在89年的PODC上，Lynch就survey了“A hundred impossibility proofs for distributed computing”[Lynch89]，到了03年，Faith Ellen（与人合作）又写了“Hundreds of impossibility results for distributed computing”[Fich2003]。最终到了14年，Hagit Attiya和Faith Ellen汇集成书“Impossibility Results for Distributed Computing”[Attiya14]\footnote{上述理论结果背后一个有趣的现象是，上面所提到的作者都是女性，分布式算法领域两本教科书的作者也是女性，她们的女性学生后续也在分布式理论领域做出了出色的结果。}。
 
 
 %----------
@@ -353,18 +378,18 @@ Multi-writer情况的不可能性结果，期间有一些受限情况下的证�
 
 有一些内容不太适合写在introduction level的分布式算法教科书中，但是又是我学习之后，收获特别大的，所以在附录里面，简单提及一下。
 
-2PC
-2 Phase Commit背后是分布事务的transactional atomicity维护的问题。2PC还有各种变体，比如3PC等。分布式数据库、云原生数据库时代，2PC和共识等机制等还有各种方式、各种程度的融合。这是我们目前很关注的问题，不过放在分布式算法的入门书里面有点太“专”了。
+%--
+\begin{itemize}
+    \item 2PC：2 Phase Commit（2PC）背后是分布事务的transactional atomicity维护的问题。2PC还有各种变体，比如3PC等。分布式数据库、云原生数据库时代，2PC和共识等机制等还有各种方式、各种程度的融合。这是我们目前很关注的问题，不过放在分布式算法的入门书里面有点太“专”了。
+    
+    \item Failure Detector：虽然容错是分布式系统构建的重要概念，但是failure detector的抽象还是太理论了，只有比较偏理论研究的读者才适合全面深入地学习 [Chandra96unreliable]。
+    
+    Weakest failure detector的这一份工作名气也挺大，比较难懂[Chandra96weakest]。后来我们在自己的工作[Huang20]中的一部分证明，其实就是这份工作证明的一个大幅简化版。我们做完[Huang20]我才真正看懂这份工作[Chandra96weakest]，并且收获很大，知道自己的证明其实可以仿照它，写得更严谨，更易懂。
+    
+    \item 基于TLA+的分布式系统形式化规约与建模：这是Lamport发明的语言及工具链，可贵之处是在工业界获得了真正的应用，而不是像很多形式化理论与技术一样，论文发表之后就被束之高阁。
+    我们有一系列基于TLA+规约与验证的工作。同时我们现在还致力于将模型层的规约与验证，与代码层的测试结合起来，预计后续会有这方面的进展。
+\end{itemize}
 
-Failure Detector
-虽然容错是分布式系统构建的重要概念，但是failure detector的抽象还是太理论了，只有比较偏理论研究的读者才适合全面深入地学习 [Chandra96unreliable]。
-
-Weakest failure detector的这一份工作名气也挺大，比较难懂[Chandra96weakest]。后来我们在自己的工作[Huang20]中的一部分证明，其实就是这份工作证明的一个大幅简化版。我们做完[Huang20]我才真正看懂这份工作[Chandra96weakest]，并且收获很大，知道自己的证明其实可以仿照它，写得更严谨，更易懂。
-
-基于TLA+的分布式系统形式化规约与建模
-这是Lamport发明的语言及工具链，可贵之处是在工业界获得了真正的应用，而不是像很多形式化理论与技术一样，论文发表之后就被束之高阁。
-
-我们有一系列基于TLA+规约与验证的工作。同是我们现在还致力于将模型层的规约与验证，与代码层的测试结合起来，预计后续会有这方面的进展。
 
 %--------------------
 \chapter{参考文献说明}
@@ -382,9 +407,11 @@ Weakest failure detector的这一份工作名气也挺大，比较难懂[Chandra
 \renewcommand{\labelitemi}{\Writinghand}
 %
 \begin{itemize}
-    \item 2022/05/29：知乎版讲义的初步效果还不错，有效推进了讲义的写作。随着基本框架的成型，后续的正式写作，转回到latex+github的写作、发布模式。
+    \item 2022/05/29：知乎版讲义的初步效果还不错，有效推进了讲义的写作。随着基本框架的成型，后续的正式写作，转回到latex+github的写作、发布模式。这算是这本讲义的V0.2版
     
     \item 2022/05/03：换一个方式，在知乎专栏上写了一版轻量级的讲义。这是当时的说明：“以前试图写一个重量级的授课讲义，推进非常缓慢。现在尝试写一个轻量级的讲义，以主要文献的推荐和简评为主，推进一段时间，试试效果。”
+    
+    \item 2021/11/24：2021年陆续写了一个讲义的草稿，基本就是文献的列举，没有实质性的评述与讨论。这算是这本讲义的V0.1版。
 \end{itemize}
 
 
