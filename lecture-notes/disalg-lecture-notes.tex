@@ -62,7 +62,7 @@
 通信的载体主要包括消息传递（Message-passing，MSG）和共享内存（Shared Memory，SHM）。我们后续的章节也是按照这个维度来组织。
 时间模型主要包括异步模型（asynchronous model）和同步模型（synchronous model），也包括更深入的半同步模型（partially synchronous model）。
 
-\fur{参考两本教材中系统模型相关章节\cite{Aspnes19, Attiya04}。\cite[Sec 2.1.1]{Aspnes19}，作者对两本书（[Aspnes19]和[Attiya04]）中，对于“消息传递系统”不同建模方式的“异”和“同”进行了比较，并回顾了相关的历史。理解不同建模背后共性的部分，是学习如何对分布式系统进行合理抽象，并进行后续的问题定义、算法设计、算法分析的基础。
+\fur{参考两本教材中系统模型相关章节\cite{Aspnes19, Attiya04}。\cite[Sec 2.1.1]{Aspnes19}，作者对两本书（\cite{Aspnes19}和\cite{Attiya04}）中，对于“消息传递系统”不同建模方式的“异”和“同”进行了比较，并回顾了相关的历史。理解不同建模背后共性的部分，是学习如何对分布式系统进行合理抽象，并进行后续的问题定义、算法设计、算法分析的基础。
 }
 
 
@@ -71,7 +71,7 @@
 
 建模中的一个重要概念是计算模型之间的模拟（simulation）。
 
-\fur{Simulation的内容可以参考[Attiya04]的Part II。
+\fur{Simulation的内容可以参考\cite[Part II]{Attiya04}。
     作者Attiya的代表工作\cite{Attiya95}是在MSG模型上，模拟一个SHM的atomic register。因为其研究的原因，Attiya在写教材的时候，也比较偏重模拟技术的讲解与应用。例如对于异步环境中共识不可能性的结论，她就专门使用模拟技术来证明。而直接证明的方式其实更有名，也非常有学习意义，它就是著名的FLP的证明\cite{Fischer85}。}
 
 一个与“模型之间的模拟”有些类似，又有重要区别的概念是“问题之间的归约（reduction）”。在深入研究分布式计算的理论问题的时候，这两个技术是以既有结论为跳板，更“省劲”地证明新结论的利器。
@@ -117,9 +117,11 @@
 
 第一章主要是介绍基本概念。MSG模型的技术细节，拓展性讨论将在此展开。
 
-节点端$in\_buf$和$out\_buf$。
+节点端主要使用一组变量$in\_buf$和$out\_buf$来建模消息的收发。
 
-信道$channel_{ij}$。
+对于一个包含$n$个节点的系统，节点间通信主要通过信道$channel_{ij} (1\leq i, j \leq n)$来建模。
+
+\fur{MSG模型的具体内容参考\cite[Sec 2.1]{Attiya04}、\cite[Chap 2]{Aspnes19}。}
 
 
 %============================================================
@@ -127,15 +129,24 @@
 
 领导者选举问题（Leader Election，LE）是一个很重要的理论、技术问题。
 
-对于先入门了一点分布式系统开发，再学习分布式系统基本概念的人而言，有一个有意思的“鸡生蛋、蛋生鸡”的辨析：共识算法需要选举一个leader保证liveness（如[Lamport01]）。同时共识算法（包括与共识等价的atomic broadcast算法）又可以支持LE机制的实现（如ZooKeeper官方的“Recipes and Solutions”）。难么，到底是使用共识实现LE，还是有了LE才能实现共识呢？
+%----------------------------------------
+\section{LE问题的定义}
 
 在具体算法之前，有两个理论的概念需要辨析：何谓一个LE算法是anonymous的？何谓一个LE算法是uniform的？对于“anonymous”性质的辨析，使得我们从理论上认识到，LE算法中，假设每一个process有一个ID是合理的，且是必须的。
 
-课程的讲解主要参考[Attiya04, Chap 3]中的算法。算法从$n^2$向nlogn的改进，让我们想起了熟悉的comparison-based sorting。
+算法从$n^2$向nlogn的改进，让我们想起了熟悉的comparison-based sorting。
 
 这些课本上的LE算法，特别是同步模型下的LE算法，它们对process的ID值的应用是让程序员感到“不适”的，感觉更像是在做智力游戏，而不是在真正解决分布式系统中的实际问题。这一感觉是对的，上述算法的讲解，主要目的就是帮助学习者厘清基本概念，掌握基本理论知识，不直接指导系统的构建，但是为系统构建打下理论基础。
 
 下界相关的结果暂时略去，它们属于impossibility results的专题。
+
+\fur{课程的讲解主要参考\cite[Chap 3]{Attiya04}中的算法。}
+
+%----------------------------------------
+\section{一点引申的讨论}
+
+对于先入门了一点分布式系统开发，再学习分布式系统基本概念的人而言，有一个有意思的“鸡生蛋、蛋生鸡”的辨析：共识算法需要选举一个leader保证liveness（如\cite{Lamport01}）。同时共识算法（包括与共识等价的atomic broadcast算法）又可以支持LE机制的实现（如ZooKeeper官方的“Recipes and Solutions”）。那么，到底是使用共识实现LE，还是有了LE才能实现共识呢？
+
 
 %============================================================
 \chapter{基本共识算法}
@@ -145,7 +156,7 @@
 
 首先需要对共识问题的严格定义，仔细地学习与体会。特别是validity的概念，初学的时候容易get不到它在说什么，为什么需要它。
 
-[Attiya04]比较简单直接的引入共识问题。[Lynch96-textbook]的讨论比较系统。[Aspnes19]的讨论，看上去比较“凌乱”地分散在好多章节中，问题、模型都在变化，但其实大概这就是共识问题，及其解法，形成的过程。所以，入门可以看第一个，学院派、学习者先看第二个，有点融会贯通的，看第三个。
+\cite{Attiya04}比较简单直接的引入共识问题。\cite{Lynch96-textbook}的讨论比较系统。 \cite{Aspnes19}的讨论，看上去比较“凌乱”地分散在好多章节中，问题、模型都在变化，但其实大概这就是共识问题，及其解法，形成的过程。所以，入门可以看第一个，学院派、学习者先看第二个，有点融会贯通的，看第三个。
 
 %--------------------
 \section{课本上的共识算法}
@@ -154,9 +165,9 @@
 
 相比之下，课本上的共识算法就显得有些落寞。但是要真正理解工业级的共识协议及其系统实现，基本的概念，平淡无奇的“课本共识算法”是必要的铺垫。
 
-[Attiya04, Sec 5.1.3]讲了一个非常简单，非常蛮力的共识算法。但是它对大家理解共识，理解如何利用冗余性来容错，有很重要的帮助。再厉害的共识算法，其实并没有跳出这个蛮力算法的路数。
+\cite[Sec 5.1.3]{Attiya04}讲了一个非常简单，非常蛮力的共识算法。但是它对大家理解共识，理解如何利用冗余性来容错，有很重要的帮助。再厉害的共识算法，其实并没有跳出这个蛮力算法的路数。
 
-同样对于拜占庭容错，课堂上我们也只讲蛮力算法[Attiya04, Sec 5.2.4, 5.2.5]。大概的原理是，充分多的好人，充分交换意见。这样的话，真话占明显多数，少量的假话，存在也不影响，它们会因为跟大多数真话不一样，而被识别出来。
+同样对于拜占庭容错，课堂上我们也只讲蛮力算法\cite[Sec 5.2.4, Sec 5.2.5]{Attiya04}。大概的原理是，充分多的好人，充分交换意见。这样的话，真话占明显多数，少量的假话，存在也不影响，它们会因为跟大多数真话不一样，而被识别出来。
 
 拜占庭共识算法总体上相对来说是难的，但是我们在课堂教学中，能够接受某些维度的不计成本。在这一前提下，它的难度是不大的。因而，这类算法更多是教学讲解的意义，它们并不是瞄着系统中的实际应用去的。它们更像是在帮助大家认识这个问题，而不是帮助大家得到一个实用的solution。
 
@@ -167,31 +178,39 @@
 \chapter{类Paxos共识算法族}
 
 
-包括Paxos [Lamport01]，Raft [Ongaro14]和Zookeeper [Hunt10, Junqueira11]。
+包括Paxos \cite{Lamport01}，Raft \cite{Ongaro14}和Zookeeper \cite{Hunt10, Junqueira11}。
 
-严格地讲，Zookeeper的Zab协议是一个atomic broadcast协议，由于atomic broadcast 和 consensus 两个问题可以互相规约，是等价的[Chandra96unreliable]，所以我们也经常不仔细区分，都称之为共识算法。
+严格地讲，Zookeeper的Zab协议是一个atomic broadcast协议，由于atomic broadcast 和 consensus 两个问题可以互相规约，是等价的\cite{Chandra96unreliable}，所以我们也经常不仔细区分，都称之为共识算法。
 
 %============================================================
 \chapter{VR共识算法族}
 
-2PC算法。
+%--------------------------------------------------------------------------------
+\section{背景和历史}
 
-VR算法。
+背景知识和历史发展过程介绍\cite[Chap 7]{Charron10}。
 
-PBFT算法。
+%--------------------------------------------------------------------------------
+\section{VR算法}
+
+\fur{Liskov的这一系列算法，受2PC的影响比较大。为了更好地理解这一族算法，大家需要先了解一下基本的2PC算法，参见第\ref{Chap_2PC}章。}
+
+%--------------------------------------------------------------------------------
+\section{PBFT算法}
+
 
 %--------------------
 \section{高山仰止：Paxos和VR}
 
-Lamport和他提出的Paxos不仅厉害，而且传奇。开始Lamport提出了Paxos算法，由于他的表述方式过于geek，导致读懂的人不多。对分布式方面的程序员而言，Paxos的出名是由于Google的推动。转述6.824（Spring 2021）的讲述，共识算法开始只是象牙塔里的一个结果而已，在众多结果中，也未见有特别过人、出奇之处。当多数据中心的平台逐步出现，构建大规模分布式系统的需求出现的时候，它的理论基础基本是就绪的，缺的就是一个团队真的把象牙塔里的协议给实实在在地实现出来。最早出现的这个团队是Google，它们实现了Paxos [Chandra07]。后续大家都知道了，几乎每个相关的公司、程序员、自媒体，都来讲讲Paxos。
+Lamport和他提出的Paxos不仅厉害，而且传奇。开始Lamport提出了Paxos算法，由于他的表述方式过于geek，导致读懂的人不多。对分布式方面的程序员而言，Paxos的出名是由于Google的推动。转述6.824（Spring 2021）的讲述，共识算法开始只是象牙塔里的一个结果而已，在众多结果中，也未见有特别过人、出奇之处。当多数据中心的平台逐步出现，构建大规模分布式系统的需求出现的时候，它的理论基础基本是就绪的，缺的就是一个团队真的把象牙塔里的协议给实实在在地实现出来。最早出现的这个团队是Google，它们实现了Paxos \cite{Chandra07}。后续大家都知道了，几乎每个相关的公司、程序员、自媒体，都来讲讲Paxos。
 
-不仅Paxos有很多直接的变体，在回顾Lamport一身工作的这本书中[Malkhi19]，把几乎所有的共识算法，都看成是Paxos的某种变体。这种提法，是有一定道理的。理解不同共识算法之间的本质联系、成长演化的历程，是全面深入学习共识算法的必要条件。
+不仅Paxos有很多直接的变体，在回顾Lamport一身工作的这本书中\cite{Malkhi19}，把几乎所有的共识算法，都看成是Paxos的某种变体。这种提法，是有一定道理的。理解不同共识算法之间的本质联系、成长演化的历程，是全面深入学习共识算法的必要条件。
 
 有一个跟Paxos同一时期提出的共识算法叫Viewstamped Replication（VR），它的提出者是2008年图灵奖得主Barbara Liskov。在Paxos如此热门的大背景下，很多人不知道这个算法，或者知道但是大大低估了它的价值。
 
 说VR多么多么厉害，可能有点偏颇，准确的说是要把VR放到Liskov一系列的研究中去看，Liskov这一系列的工作是“高山仰止”级的。Liskov在1980年左右，从data abstraction，CLU语言设计的工作，逐步转到（广义的）分布式数据库系统方面的工作。在这一过程中，为了提高系统的可靠性，她受2PC协议的启发，设计了VR算法。
 
-VR本身不是太有名，或者说风头完全被Paxos盖住。但是对于拜占庭容错，经典的PBFT算法就是VR的派生。再考虑到后来Liskov在分布式事务方面的奠基性工作[Adya99]等，Liskov的这一系列工作是不输于Lamport的Paxos系列工作的。只不过在这一系列的工作中，VR是略显普通的一份子。
+VR本身不是太有名，或者说风头完全被Paxos盖住。但是对于拜占庭容错，经典的PBFT算法就是VR的派生。再考虑到后来Liskov在分布式事务方面的奠基性工作\cite{Adya99}等，Liskov的这一系列工作是不输于Lamport的Paxos系列工作的。只不过在这一系列的工作中，VR是略显普通的一份子。
 
 这一段历史，Liskov在\cite[Chp. 7]{Charron10}中自己有简要论述。
 
@@ -209,9 +228,9 @@ VR本身不是太有名，或者说风头完全被Paxos盖住。但是对于拜�
 
 异步分布式消息传递系统的执行轨迹（称之以为一个distributed computation，也有很多其它名称），天然自带happen-before关系，基于这一关系可以定义系统的consistent global snapshot，而系统的所有snapshot集合，具有格结构。
 
-这一happen-before关系的定义参见Lamport奠基性的论文[Lamport78]。这一happen-before关系可以用各种不同的逻辑时钟来表示。各种逻辑时钟机制，可以看成是表示偏序关系的代价和表示偏序关系的能力之间的权衡。虽然Lamport那篇奠基性的论文名气很大，但是学习逻辑时钟，建议从最标准、表达能力最强、代价最大的vector clock入手[Mattern89]。
+这一happen-before关系的定义参见Lamport奠基性的论文\cite{Lamport78}。这一happen-before关系可以用各种不同的逻辑时钟来表示。各种逻辑时钟机制，可以看成是表示偏序关系的代价和表示偏序关系的能力之间的权衡。虽然Lamport那篇奠基性的论文名气很大，但是学习逻辑时钟，建议从最标准、表达能力最强、代价最大的vector clock入手\cite{Mattern89}。
 
-了解happen-before关系及其vector clock编码之后，就可以正式理解distributed computation中的snapshot和snapshot之间的格结构，主要参见[Mattern89]和[Babaoglu93]。
+了解happen-before关系及其vector clock编码之后，就可以正式理解distributed computation中的snapshot和snapshot之间的格结构，主要参见\cite{Mattern89}和\cite{Babaoglu93}。
 
 %----------
 \section{理解：全局谓词的规约和检测}
@@ -227,9 +246,36 @@ VR本身不是太有名，或者说风头完全被Paxos盖住。但是对于拜�
     \item 在trace上检测谓词的成立情况。
 \end{itemize}
 
-谓词规约和检测的一些初步知识参见[Chandy85, Cooper91, Babaoglu95]等。一篇关于global temporal谓词的更深刻的理论分析见[Charron95]。
+谓词规约和检测的一些初步知识参见\cite{Chandy85, Cooper91, Babaoglu95}等。一篇关于global temporal谓词的更深刻的理论分析见\cite{Charron95}。
 
 %我有一个面向本科生的通识课程报告，关于“偏序集与格理论在分布式系统中的应用”的，可供参考\footnote{https://www.bilibili.com/video/BV1iU4y1M7SU/}。
+
+
+%============================================================
+\chapter{分布事务提交2PC算法} \label{Chap_2PC}
+
+%--------------------------------------------------------------------------------
+\section{分布事务系统模型}
+
+分布式云原生数据库的基本结构。
+
+分布事务系统建模。
+
+数据的划分。数据的复制。
+
+原子性提交（Atomic Commit，AC）。并发控制（Concurrency Control，CC）。基于复制的容错技术（Fault-tolerance based on Replication，RE）。
+
+\fur{上述系统模型，包括下面的算法，主要参考\cite[Chap 23]{Silberschatz20}。}
+
+%--------------------------------------------------------------------------------
+\section{2PC算法}
+
+原始的2PC算法。
+
+%--------------------------------------------------------------------------------
+\section{基于共识的容错2PC算法}
+
+用共识解决原始2PC coordinator单点失败的问题。
 
 %----------------------------------------
 \part{共享内存算法}
@@ -249,14 +295,16 @@ SHM模型的技术细节，拓展性讨论将在此展开。
 
 我们这里将以原子寄存器（atomic register）为例，讲解SHM模型的基本概念。对于SHM一致性模型的更全面的讨论将在第\ref{Chap_SHM-Consis}章展开。
 
+\fur{SHM模型具体内容参考\cite[4.1]{Attiya04}和\cite[Chap 15]{Aspnes19}。}
+
 %============================================================
 \chapter{SHM一致性模型} \label{Chap_SHM-Consis}
 
-[Attiya04, Chap 4]所讲解的SHM，其实是一个退化版。因为对shared register的更新是原子的，所以它其实讲的是SHM上的atomic register抽象。Atomic register是一个非常重要的抽象，它是深入理解SHM模型的支点。它的原始定义参考[Lamport86a, Lamport86b]。
+\cite[Chap 4]{Attiya04}所讲解的SHM，其实是一个退化版。因为对shared register的更新是原子的，所以它其实讲的是SHM上的atomic register抽象。Atomic register是一个非常重要的抽象，它是深入理解SHM模型的支点。它的原始定义参考\cite{Lamport86a, Lamport86b}。
 
-在MSG模型上，模拟出SHM模型中的atomic register抽象，是分布共享内存DSM中的经典问题。所以在一些DSM的经典工作中，也可以读到atomic register的定义，而且读起来可能比SHM相关文献中的定义还好懂一些，包括Attiya的DSM奠基性工作[Attiya95]，Welch关于multi-writer情况的讨论[Shao11]，atomic register fast access下界证明的经典工作[Dutta10]，也包括我们自己下界证明的工作[Huang20]和ASC( Almost Strong Consistency)的工作[Wei17, Ouyang21]。
+在MSG模型上，模拟出SHM模型中的atomic register抽象，是分布共享内存DSM中的经典问题。所以在一些DSM的经典工作中，也可以读到atomic register的定义，而且读起来可能比SHM相关文献中的定义还好懂一些，包括Attiya的DSM奠基性工作\cite{Attiya95}，Welch关于multi-writer情况的讨论\cite{Shao11}，atomic register fast access下界证明的经典工作\cite{Dutta10}，也包括我们自己下界证明的工作\cite{Huang20}和ASC( Almost Strong Consistency)的工作\cite{Wei17, Ouyang21}。
 
-有了atomic register抽象的铺垫之后，可以更深入地了解SHM的一致性模型，包括带时间的atomic/regular/safe registers [Lamport86a, Lamport86b, Shao11]。还包括不带时间的各种模型，及其背后的统一框架[Steinke04]。这个统一框架很深刻，把所有一致性模型都打碎，碎成乐高一样的原子块，进而所有模型都可以挑若干原子块搭建起来，并且通过上述解构，比较容易看出所有模型在强弱关键下，具有lattice结构。
+有了atomic register抽象的铺垫之后，可以更深入地了解SHM的一致性模型，包括带时间的atomic / regular / safe registers \cite{Lamport86a, Lamport86b, Shao11}。还包括不带时间的各种模型，及其背后的统一框架\cite{Steinke04}。这个统一框架很深刻，把所有一致性模型都打碎，碎成乐高一样的原子块，进而所有模型都可以挑若干原子块搭建起来，并且通过上述解构，比较容易看出所有模型在强弱关键下，具有lattice结构。
 
 
 %--------------------
@@ -269,14 +317,14 @@ SHM模型的技术细节，拓展性讨论将在此展开。
 
 从理论的视角，它就是在MSG模型上，模拟出SHM的假象。我们的讨论主要基于这一视角，并且主要讨论atomic register的MSG实现。其它更复杂的DSM概念都可以基于此来逐步深入学习。
 
-从系统的视角，DSM最早在[Li98]中提出。随着多数据中心平台的出现，随着分布式云储存、NoSQL、NewSQL、云原生数据库等新型计算平台上新型数据密集型基础设施软件的出现，DSM可以看成是上述实际软件系统的理论抽象。虽然上述实际系统比DSM概念所描绘的系统要复杂很多，但是DSM的概念是上述系统构建的基础铺垫与支撑。
+从系统的视角，DSM最早在\cite{Li89}中提出。随着多数据中心平台的出现，随着分布式云储存、 NoSQL、 NewSQL、云原生数据库等新型计算平台上新型数据密集型基础设施软件的出现，DSM可以看成是上述实际软件系统的理论抽象。虽然上述实际系统比DSM概念所描绘的系统要复杂很多，但是DSM的概念是上述系统构建的基础铺垫与支撑。
 
 %----------
 \section{Atomic register的MSG实现}
 
-Atomic register可以进一步分为single-writer和multi-writer的情况。Single-writer情况的MSG实现是Attiya的代表性工作[Attiya95]。[Lynch97]中把它推广到了multi-writer的情况。
+Atomic register可以进一步分为single-writer和multi-writer的情况。Single-writer情况的MSG实现是Attiya的代表性工作\cite{Attiya95}。\cite{Lynch97}中把它推广到了multi-writer的情况。
 
-不过早期的论文都比较难懂，相关领域深入研究的读者顶多可以看看[Attiya95]，[Lynch97]基本不用直接去看了。[Aspnes19, Chap 16]有提炼后的重新表述，从学习的角度而言，看课本就可以了，很多不必要的细节都被合理抛弃了。
+不过早期的论文都比较难懂，相关领域深入研究的读者顶多可以看看 \cite{Attiya95}，\cite{Lynch97} 基本不用直接去看了。\cite[Chap 16]{Aspnes19}有提炼后的重新表述，从学习的角度而言，看课本就可以了，很多不必要的细节都被合理抛弃了。
 
 
 %--------------------
@@ -293,10 +341,12 @@ Atomic register可以进一步分为single-writer和multi-writer的情况。Sing
 
 从宏观的视角来看，互斥算法可以看成是一个频谱：SHM提供的存储抽象越强，那MUTEX就越容易解决，反之就越难。
 
+\fur{问题的定义及下面的算法，主要参考\cite[Chap 4]{Attiya04}。}
+
 %----------
 \section{基于强原语的MUTEX算法}
 
-[Attiya04, Chap 4]中先讲了几个用强大原语 - 包括test\&set，read-modify-write等 - 的MUTEX算法。
+\cite[Chap 4]{Attiya04}中先讲了几个用强大原语 - 包括test\&set，read-modify-write等 - 的MUTEX算法。
 
 作为一个实际系统中的例子，6.824（Spring 2021）的L4 - Primary-backup Replication里有一个用powerful原语的例子。当primary和backup断连时，它们都可以访问一个storage sverver，它们用test\&set原语来更新storage server上的一个标志位来实现容错场景下最核心的协同。
 
@@ -349,15 +399,14 @@ Bakery算法在一个维度有明显的问题，即它要求register能存任意
 
 当你熟悉分布式算法、分布式系统的基本概念，对它们有一点宏观性的思考的时候，一个很重要的概念就是分布式算法、分布式系统中的基本的不可能性结果。
 
-\fur{早在89年的PODC上，Lynch就survey了“A hundred impossibility proofs for distributed computing”[Lynch89]，到了03年，Faith Ellen（与人合作）又写了“Hundreds of impossibility results for distributed computing”[Fich2003]。最终到了14年，Hagit Attiya和Faith Ellen汇集成书“Impossibility Results for Distributed Computing”[Attiya14]\footnote{上述理论结果背后一个有趣的现象是，上面所提到的作者都是女性，分布式算法领域两本教科书的作者也是女性，她们的女性学生后续也在分布式理论领域做出了出色的结果。}。}
-
+\fur{早在89年的PODC上，Lynch就survey了“A hundred impossibility proofs for distributed computing”\cite{Lynch89}，到了03年，Faith Ellen（与人合作）又写了“Hundreds of impossibility results for distributed computing”\cite{Fich03}。最终到了14年，Hagit Attiya和Faith Ellen汇集成书“Impossibility Results for Distributed Computing”\cite{Attiya14} \footnote{上述理论结果背后一个有趣的现象是，上面所提到的作者都是女性，分布式算法领域两本教科书的作者也是女性，她们的女性学生后续也在分布式理论领域做出了出色的结果。}。}
 
 %----------
 \section{FLP}
 
-不可能性结果的系统讨论超出introduction级别的教科书的范畴，有需要直接去看[Attiya14]即可。但是有两组结果有一些特别的原因，专门提一下。
+不可能性结果的系统讨论超出introduction级别的教科书的范畴，有需要直接去看\cite{Attiya14}即可。但是有两组结果有一些特别的原因，专门提一下。
 
-一个是异步容错共识的不可能性结果FLP。由于共识算法的大热，它也老被人提起。它的原始证明见[Fischer85]，直接看课本的表述更容易一些[Attiya14]。
+一个是异步容错共识的不可能性结果FLP。由于共识算法的大热，它也老被人提起。它的原始证明见\cite{Fischer85}，直接看课本的表述更容易一些\cite{Attiya14}。
 
 看这类证明，必须对分布式系统的执行有一个“超然世外的上帝视角”。分布式系统的执行就像是电影拍摄的片段、素材，你就像剪辑导演，随便复制、改写、拼接，直到得到满足你要求的执行。
 
@@ -366,7 +415,7 @@ Bakery算法在一个维度有明显的问题，即它要求register能存任意
 
 同步模型下解决拜占庭共识问题的一个基础结论是：当$3f>n$时，是不可能解决拜占庭共识问题的。其证明的关键在于，采用adversary argument的视角，可以让拜占庭错误的proc做你希望的任意动作，这样你就可以构造两个不可区分的执行。这两个执行的不可区分性与它们分别达成不同的共识，又是矛盾的。
 
-具体的构造是巧妙的，需要结合[Attiya04, Sec 5.2.3]的图示来理解。证明是先讨论n=3的特殊情况，然后再据此推出任意n情况的证明。
+具体的构造是巧妙的，需要结合\cite[Sec 5.2.3]{Attiya04}的图示来理解。证明是先讨论n=3的特殊情况，然后再据此推出任意n情况的证明。
 
 %----------
 \section{Chain Argument}
@@ -375,7 +424,7 @@ Bakery算法在一个维度有明显的问题，即它要求register能存任意
 
 这个技术可以让你很形象地理解什么叫做，以一个剪辑导演的视角，拼接分布式系统的执行片段。我们的PODC2020工作的会议报告中，有一个形象的简单例子 \footnote{https://www.bilibili.com/video/BV1K54y1D766/}。
 
-具体内容可以看[Attiya14, Chap 2]。我自己由于下面研究的关系，实际看的是一份具体的研究工作[Hadjistasi16]（这是一篇PODC16的短文，具体细节可以看它的arxiv长文版本）。
+具体内容可以看\cite[Chap 2]{Attiya14}。我自己由于下面研究的关系，实际看的是一份具体的研究工作\cite{Hadjistasi16}（这是一篇PODC16的短文，具体细节可以看它的arxiv长文版本）。
 
 %----------
 \section{Fast Access to Atomic Registers}
@@ -384,11 +433,11 @@ Bakery算法在一个维度有明显的问题，即它要求register能存任意
 
 直觉上一轮通信是不可能实现atomic register抽象的，但是严格证明它却不那么容易。还是分single-writer和multi-writer的情况来逐个击破。
 
-[Dutta10]证明了single-writer情况的fast实现不可能。
+\cite{Dutta10}证明了single-writer情况的fast实现不可能。
 
-Multi-writer情况的不可能性结果，期间有一些受限情况下的证明。我们自己的一份工作最终解决了这一问题[Huang20]。
+Multi-writer情况的不可能性结果，期间有一些受限情况下的证明。我们自己的一份工作最终解决了这一问题\cite{Huang20}。
 
-此外，既然fast是不可能严格实现atomic register的，那我们的另一系列的工作就讨论：假设fast是必须的，atomicity会被牺牲到什么程度。针对这一问题，我们提出了ASC（Almost Strong Consistency）的概念，并做了一些初步的理论分析与实验研究 [Wei17, Ouyang21]。
+此外，既然fast是不可能严格实现atomic register的，那我们的另一系列的工作就讨论：假设fast是必须的，atomicity会被牺牲到什么程度。针对这一问题，我们提出了ASC（Almost Strong Consistency）的概念，并做了一些初步的理论分析与实验研究\cite{Wei17, Ouyang21}。
 
 %----------------------------------------
 \appendix
@@ -399,27 +448,27 @@ Multi-writer情况的不可能性结果，期间有一些受限情况下的证�
 
 %--
 \begin{itemize}
-    \item 2PC：2 Phase Commit（2PC）背后是分布事务的transactional atomicity维护的问题。2PC还有各种变体，比如3PC等。分布式数据库、云原生数据库时代，2PC和共识等机制等还有各种方式、各种程度的融合。这是我们目前很关注的问题，不过放在分布式算法的入门书里面有点太“专”了。
+    %\item 2PC：2 Phase Commit（2PC）背后是分布事务的transactional atomicity维护的问题。2PC还有各种变体，比如3PC等。分布式数据库、云原生数据库时代，2PC和共识等机制等还有各种方式、各种程度的融合。这是我们目前很关注的问题，不过放在分布式算法的入门书里面有点太“专”了。
     
-    \item Failure Detector：虽然容错是分布式系统构建的重要概念，但是failure detector的抽象还是太理论了，只有比较偏理论研究的读者才适合全面深入地学习 [Chandra96unreliable]。
-    
-    Weakest failure detector的这一份工作名气也挺大，比较难懂[Chandra96weakest]。后来我们在自己的工作[Huang20]中的一部分证明，其实就是这份工作证明的一个大幅简化版。我们做完[Huang20]我才真正看懂这份工作[Chandra96weakest]，并且收获很大，知道自己的证明其实可以仿照它，写得更严谨，更易懂。
+    \item Failure Detector：虽然容错是分布式系统构建的重要概念，但是failure detector的抽象还是太理论了，只有比较偏理论研究的读者才适合全面深入地学习 \cite{Chandra96unreliable}。
+    Weakest failure detector的这一份工作名气也挺大，比较难懂\cite{Chandra96weakest}。后来我们在自己的工作\cite{Huang20}中的一部分证明，其实就是这份工作证明的一个大幅简化版。我们做完\cite{Huang20}我才真正看懂这份工作\cite{Chandra96weakest}，并且收获很大，知道自己的证明其实可以仿照它，写得更严谨，更易懂。
     
     \item 基于TLA+的分布式系统形式化规约与建模：这是Lamport发明的语言及工具链，可贵之处是在工业界获得了真正的应用，而不是像很多形式化理论与技术一样，论文发表之后就被束之高阁。
     我们有一系列基于TLA+规约与验证的工作。同时我们现在还致力于将模型层的规约与验证，与代码层的测试结合起来，预计后续会有这方面的进展。
 \end{itemize}
 
 
-%--------------------
-\chapter{参考文献说明}
+%--
+%\chapter{参考文献说明}
+%
+%所有参考文献ID对应的bib，均可以在这个链接查到：https://github.com/alg-nju/disalg-bib-dict。
+%
+%注：bib-dict是“相关的”文献都会列，不一定每一篇文献都是经典。比如常见的一种情况是，有一篇文献的某个局部/某个侧面，对学习某个知识点有比较高的参考价值，它就会被列进来。深入学习还是要结合讲义的评述，加上自己的深入阅读。读完、读懂之后，自己才能真正知道哪个是经典，它为什么经典。
+%
+%未来修订中，会陆续把这些指向网络的BibID换成正式的参考文献。
 
-所有参考文献ID对应的bib，均可以在这个链接查到：https://github.com/alg-nju/disalg-bib-dict。
 
-注：bib-dict是“相关的”文献都会列，不一定每一篇文献都是经典。比如常见的一种情况是，有一篇文献的某个局部/某个侧面，对学习某个知识点有比较高的参考价值，它就会被列进来。深入学习还是要结合讲义的评述，加上自己的深入阅读。读完、读懂之后，自己才能真正知道哪个是经典，它为什么经典。
-
-未来修订中，会陆续把这些指向网络的BibID换成正式的参考文献。
-
-%--------------------
+%============================================================
 \chapter{讲义的修订历史}
 
 %--
@@ -436,13 +485,9 @@ Multi-writer情况的不可能性结果，期间有一些受限情况下的证�
 \end{itemize}
 
 
-
-
-
-
-
 %-- bib
-\bibliographystyle{apalike}
+\bibliographystyle{plain}
+%\bibliographystyle{apalike}
 %\bibliographystyle{alpha}
 \bibliography{disalg-lecture-notes}
 

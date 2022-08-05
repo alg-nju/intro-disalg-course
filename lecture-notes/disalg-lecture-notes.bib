@@ -1,5 +1,18 @@
 %--
 
+% ady
+
+@phdthesis{Adya99,
+    author = {Adya, Atul},
+    title = {Weak Consistency: A Generalized Theory and Optimistic Implementations 
+    for Distributed Transactions},
+    year = {1999},
+    note = {AAI0800775},
+    publisher = {Massachusetts Institute of Technology},
+    address = {Cambridge, MA, USA},
+}
+
+
 % alp
 
 @article{Alpern85,
@@ -54,6 +67,48 @@
     publisher = {John Wiley \& Sons},
 }
 
+@book{Attiya14,
+    author = {Attiya, Hagit and Ellen, Faith},
+    title = {Impossibility Results for Distributed Computing},
+    year = {2014},
+    isbn = {9781627051712},
+    publisher = {Morgan \& Claypool},
+}
+
+
+% bab
+
+@inbook{Babaoglu93,
+    author = {Babao\u{g}lu, \"{O}zalp and Marzullo, Keith},
+    title = {Consistent Global States of Distributed Systems: Fundamental Concepts and Mechanisms},
+    year = {1993},
+    isbn = {0201624273},
+    publisher = {ACM Press/Addison-Wesley Publishing Co.},
+    address = {USA},
+    booktitle = {Distributed Systems (2nd Ed.)},
+    pages = {55-96},
+    numpages = {42}
+}
+
+@article{Babaoglu95,
+    author = {Babao\u{g}lu, \"{O}zalp and Raynal, Michel},
+    title = {Specification and Verification of Dynamic Properties in Distributed Computations},
+    year = {1995},
+    issue_date = {Aug. 1, 1995},
+    publisher = {Academic Press, Inc.},
+    address = {USA},
+    volume = {28},
+    number = {2},
+    issn = {0743-7315},
+    url = {https://doi.org/10.1006/jpdc.1995.1098},
+    doi = {10.1006/jpdc.1995.1098},
+    journal = {J. Parallel Distrib. Comput.},
+    month = {aug},
+    pages = {173-185},
+    numpages = {13}
+}
+
+
 % cac
 
 @book{Cachin11,
@@ -68,6 +123,93 @@
 
 % cha
 
+@article{Chandra96unreliable,
+    author = {Chandra, Tushar Deepak and Toueg, Sam},
+    title = {Unreliable Failure Detectors for Reliable Distributed Systems},
+    year = {1996},
+    issue_date = {March 1996},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {43},
+    number = {2},
+    issn = {0004-5411},
+    url = {https://doi.org/10.1145/226643.226647},
+    doi = {10.1145/226643.226647},
+    journal = {J. ACM},
+    month = mar,
+    pages = {225–267},
+    numpages = {43},
+    keywords = {processor failures, Byzantine Generals’ problem, crash failures, consensus problem, agreement problem, failure detection, asynchronous systems, fault-tolerance, atomic broadcast, message passing, commit problem, partial synchrony}
+}
+
+@article{Chandra96weakest,
+    author = {Chandra, Tushar Deepak and Hadzilacos, Vassos and Toueg, Sam},
+    title = {The Weakest Failure Detector for Solving Consensus},
+    year = {1996},
+    issue_date = {July 1996},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {43},
+    number = {4},
+    issn = {0004-5411},
+    url = {https://doi.org/10.1145/234533.234549},
+    doi = {10.1145/234533.234549},
+    journal = {J. ACM},
+    month = jul,
+    pages = {685-722},
+    numpages = {38},
+    keywords = {message passing, processor failures, crash failures, Byzantine Generals problem, partial synchrony, asynchronous systems, failure detection, commit problem, agreement problem, fault-tolerance, atomic broadcast, consensus problem}
+}
+
+@inproceedings{Chandra07,
+    author = {Chandra, Tushar D. and Griesemer, Robert and Redstone, Joshua},
+    title = {Paxos Made Live: An Engineering Perspective},
+    booktitle = {Proceedings of the Twenty-sixth Annual ACM Symposium on 
+    Principles of Distributed Computing},
+    series = {PODC '07},
+    year = {2007},
+    pages = {398--407},
+    url = {http://doi.acm.org/10.1145/1281100.1281103},
+    publisher = {ACM},
+}
+
+@article{Chandy85,
+    author = {Chandy, K. Mani and Lamport, Leslie},
+    title = {Distributed Snapshots: Determining Global States of Distributed Systems},
+    year = {1985},
+    issue_date = {Feb. 1985},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {3},
+    number = {1},
+    issn = {0734-2071},
+    url = {https://doi.org/10.1145/214451.214456},
+    doi = {10.1145/214451.214456},
+    journal = {ACM Trans. Comput. Syst.},
+    month = {feb},
+    pages = {63–75},
+    numpages = {13}
+}
+
+@article{Charron95,
+    author = {Charron-Bost, Bernadette and Delporte-Gallet, Carole and Fauconnier, Hugues},
+    title = {Local and Temporal Predicates in Distributed Systems},
+    year = {1995},
+    issue_date = {Jan. 1995},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {17},
+    number = {1},
+    issn = {0164-0925},
+    url = {https://doi.org/10.1145/200994.201005},
+    doi = {10.1145/200994.201005},
+    journal = {ACM Trans. Program. Lang. Syst.},
+    month = {jan},
+    pages = {157-179},
+    numpages = {23},
+    keywords = {distributed computation, predicate transformer, local predicate, temporal predicate, predicate, knowledge predicate, observation}
+}
+
 @book{Charron10,
     editor = {Charron-Bost, Bernadette and Pedone, Fernando and Schiper, Andr\'{e}},
     title = {Replication: Theory and Practice},
@@ -78,7 +220,67 @@
 }
 
 
-%fis
+% coo
+
+@inproceedings{Cooper91,
+    author = {Cooper, Robert and Marzullo, Keith},
+    title = {Consistent Detection of Global Predicates},
+    year = {1991},
+    isbn = {0897914570},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/122759.122774},
+    doi = {10.1145/122759.122774},
+    booktitle = {Proceedings of the 1991 ACM/ONR Workshop on Parallel and Distributed Debugging},
+    pages = {167-174},
+    numpages = {8},
+    location = {Santa Cruz, California, USA},
+    series = {PADD '91}
+}
+
+
+% dut
+
+@article{Dutta10,
+    author = {Dutta, Partha and Guerraoui, Rachid and Levy, Ron R. and Vukoli\'{c}, Marko},
+    title = {Fast Access to Distributed Atomic Memory},
+    journal = {SIAM J. Comput.},
+    issue_date = {August 2010},
+    volume = {39},
+    number = {8},
+    month = dec,
+    year = {2010},
+    issn = {0097-5397},
+    pages = {3752--3783},
+    numpages = {32},
+    url = {http://dx.doi.org/10.1137/090757010},
+    doi = {10.1137/090757010},
+    acmid = {2078530},
+    publisher = {Society for Industrial and Applied Mathematics},
+    address = {Philadelphia, PA, USA},
+    keywords = {Byzantine failures, atomic registers, distributed algorithms, fault-tolerance, shared-memory emulations, time-complexity},
+}
+
+
+% fic
+
+@Article{Fich03,
+    author="Fich, Faith and Ruppert, Eric",
+    title="Hundreds of impossibility results for distributed computing",
+    journal="Distributed Computing",
+    year="2003",
+    month="Sep",
+    day="01",
+    volume="16",
+    number="2",
+    pages="121--163",
+    issn="1432-0452",
+    doi="10.1007/s00446-003-0091-y",
+    url="https://doi.org/10.1007/s00446-003-0091-y"
+}
+
+
+% fis
 
 @article{Fischer85,
     author = {Fischer, Michael J. and Lynch, Nancy A. and Paterson, Michael S.},
@@ -100,7 +302,190 @@
 }
 
 
-%mal
+% had
+
+@inproceedings{Hadjistasi16,
+    author = {Hadjistasi, Theophanis and Nicolaou, Nicolas and Schwarzmann, Alexander A.},
+    title = {Brief Announcement: Oh-RAM! One and a Half Round Read/Write Atomic Memory},
+    year = {2016},
+    isbn = {9781450339643},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/2933057.2933073},
+    doi = {10.1145/2933057.2933073},
+    booktitle = {Proceedings of the 2016 ACM Symposium on Principles of Distributed Computing},
+    pages = {353-355},
+    numpages = {3},
+    keywords = {message-passing, read/write objects, latency, fault-tolerance, atomicity},
+    location = {Chicago, Illinois, USA},
+    series = {PODC '16}
+}
+
+
+% hua
+
+@inproceedings{Huang20,
+    author = {Huang, Kaile and Huang, Yu and Wei, Hengfeng},
+    title = {Fine-Grained Analysis on Fast Implementations of Distributed Multi-Writer Atomic Registers},
+    year = {2020},
+    isbn = {9781450375825},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3382734.3405698},
+    doi = {10.1145/3382734.3405698},
+    booktitle = {Proceedings of the 39th Symposium on Principles of Distributed Computing},
+    pages = {200–209},
+    numpages = {10},
+    keywords = {fast implementation, impossibility result, atomicity, chain argument},
+    location = {Virtual Event, Italy},
+    series = {PODC'20}
+}
+
+
+% hun
+
+@inproceedings{Hunt10,
+    author = {Hunt, Patrick and Konar, Mahadev and Junqueira, Flavio P. and 
+    Reed, Benjamin},
+    title = {{ZooKeeper}: wait-free coordination for Internet-scale systems},
+    booktitle = {Proc. ATC'10, USENIX Annual Technical Conference},
+    year = {2010},
+    location = {Boston, MA},
+    pages = {145--158},
+    url = {http://portal.acm.org/citation.cfm?id=1855840.1855851},
+    publisher = {USENIX},
+}
+
+
+% jun
+
+@inproceedings{Junqueira11,
+    author = {Junqueira, Flavio P. and Reed, Benjamin C. and Serafini, Marco},
+    title = {Zab: high-performance broadcast for primary-backup systems},
+    booktitle = {Proc. DSN'11, IEEE/IFIP Conference on 
+    Dependable Systems and Networks},
+    year = {2011},
+    pages = {245--256},
+    url = {http://dx.doi.org/10.1109/DSN.2011.5958223},
+    publisher = {IEEE},
+}
+
+
+% lam
+
+@article{Lamport78,
+    author = {Leslie Lamport},
+    title = {Time, clocks, and the ordering of events in a distributed system},
+    journal = {Commun. ACM},
+    volume = {21},
+    number = {7},
+    year = {1978},
+    issn = {0001-0782},
+    pages = {558--565},
+    doi = {http://doi.acm.org/10.1145/359545.359563 },
+    publisher = {ACM},
+    address = {New York, NY, USA},
+}
+
+@article{Lamport86a,
+    author={Lamport, Leslie},
+    title={On interprocess communication. Part I: Basic formalism},
+    journal={Distributed Computing},
+    volume={1},
+    number={2},
+    pages={77-85},
+    year={1986},
+    url={http://dx.doi.org/10.1007/BF01786227},
+    publisher={Springer-Verlag},
+}
+
+@article{Lamport86b,
+    author={Lamport, Leslie},
+    title={On interprocess communication. Part II: Algorithms},
+    journal={Distributed Computing},
+    volume={1},
+    number={2},
+    pages={86-101},
+    year={1986},
+    url={http://dx.doi.org/10.1007/BF01786228},
+    publisher={Springer-Verlag},
+}
+
+@Article{Lamport01,
+    author = {Lamport, Leslie},
+    title = {Paxos Made Simple},
+    year = {2001},
+    month = {December},
+    url = {https://www.microsoft.com/en-us/research/publication/paxos-made-simple/},
+    pages = {51-58},
+    journal = {ACM SIGACT News (Distributed Computing Column) 32, 4 (Whole Number 121, December 2001)},
+}
+
+
+% li
+
+@article{Li89,
+    author = {Li, Kai and Hudak, Paul},
+    title = {Memory Coherence in Shared Virtual Memory Systems},
+    journal = {ACM Trans. Comput. Syst.},
+    issue_date = {Nov. 1989},
+    volume = {7},
+    number = {4},
+    month = nov,
+    year = {1989},
+    issn = {0734-2071},
+    pages = {321--359},
+    numpages = {39},
+    url = {http://doi.acm.org/10.1145/75104.75105},
+    doi = {10.1145/75104.75105},
+    acmid = {75105},
+    publisher = {ACM},
+    address = {New York, NY, USA},
+} 
+
+
+% lyn
+
+@inproceedings{Lynch89,
+    author = {Lynch, N.},
+    title = {A Hundred Impossibility Proofs for Distributed Computing},
+    year = {1989},
+    isbn = {0897913264},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/72981.72982},
+    doi = {10.1145/72981.72982},
+    booktitle = {Proceedings of the Eighth Annual ACM Symposium on Principles of Distributed Computing},
+    pages = {1-28},
+    numpages = {28},
+    location = {Edmonton, Alberta, Canada},
+    series = {PODC '89}
+}
+
+@book{Lynch96-textbook,
+    author = {Lynch, Nancy A.},
+    title = {Distributed Algorithms},
+    year = {1996},
+    isbn = {9780080504704},
+    publisher = {Morgan Kaufmann Publishers Inc.},
+    address = {San Francisco, CA, USA},
+}
+
+@inproceedings{Lynch97, 
+    author={N. A. Lynch and A. A. Shvartsman}, 
+    booktitle={Proceedings of IEEE 27th International Symposium on 
+    Fault Tolerant Computing}, 
+    title={Robust emulation of shared memory using 
+    dynamic quorum-acknowledged broadcasts}, 
+    year={1997}, 
+    pages={272-281}, 
+    doi={10.1109/FTCS.1997.614100}, 
+    ISSN={0731-3071}, 
+    month={June},
+}
+
+
+% mal
 
 @book{Malkhi19,
     editor = {Malkhi, Dahlia},
@@ -110,3 +495,129 @@
     publisher = {Association for Computing Machinery},
     address = {New York, NY, USA},
 }
+
+
+% mat
+
+@inproceedings{Mattern89,
+    author = {Friedemann Mattern},
+    title = {Virtual time and global states of distributed systems},
+    booktitle = "Proc. International Workshop on Parallel and Distributed Algorithms",
+    address = "Holland",
+    year = {1989},
+    pages = {215--226},
+}
+
+
+% ong
+
+@inproceedings{Ongaro14,
+    author = {Ongaro, Diego and Ousterhout, John},
+    title = {In Search of an Understandable Consensus Algorithm},
+    booktitle = {Proceedings of the 2014 USENIX Conference on USENIX Annual Technical Conference},
+    series = {USENIX ATC'14},
+    year = {2014},
+    isbn = {978-1-931971-10-2},
+    location = {Philadelphia, PA},
+    pages = {305--320},
+    numpages = {16},
+    url = {http://dl.acm.org/citation.cfm?id=2643634.2643666},
+    acmid = {2643666},
+    publisher = {USENIX Association},
+    address = {Berkeley, CA, USA},
+} 
+
+
+% ouy
+
+@article{Ouyang21,
+    author = {Ouyang, Lingzhi and Huang, Yu and Wei, Hengfeng and Lu, Jian},
+    title = {Achieving Probabilistic Atomicity With Well-Bounded Staleness and Low Read Latency in Distributed Datastores},
+    year = {2021},
+    issue_date = {April 2021},
+    publisher = {IEEE Press},
+    volume = {32},
+    number = {4},
+    issn = {1045-9219},
+    url = {https://doi.org/10.1109/TPDS.2020.3034328},
+    doi = {10.1109/TPDS.2020.3034328},
+    journal = {IEEE Trans. Parallel Distrib. Syst.},
+    month = {apr},
+    pages = {815-829},
+    numpages = {15}
+}
+
+
+% sha
+
+@article{Shao11,
+    author = {Shao, Cheng and Welch, Jennifer L. and Pierce, Evelyn 
+    and Lee, Hyunyoung},
+    title = {Multiwriter Consistency Conditions for Shared Memory Registers},
+    journal = {SIAM J. Comput.},
+    issue_date = {February 2011},
+    volume = {40},
+    number = {1},
+    month = jan,
+    year = {2011},
+    issn = {0097-5397},
+    pages = {28--62},
+    numpages = {35},
+    url = {http://dx.doi.org/10.1137/07071158X},
+    doi = {10.1137/07071158X},
+    acmid = {2078669},
+    publisher = {Society for Industrial and Applied Mathematics},
+    address = {Philadelphia, PA, USA},
+    keywords = {multiwriter registers, mutual exclusion, quorum systems, 
+    regularity, shared memory consistency},
+}
+
+
+% sil
+
+@book{Silberschatz20,
+    author    = {Avi Silberschatz and Henry F. Korth and S. Sudarshan},
+    title     = {Database System Concepts, Seventh Edition},
+    publisher = {McGraw-Hill Book Company},
+    year      = {2020},
+    url       = {https://www.db-book.com/db7/index.html},
+    isbn      = {9780078022159},
+}
+
+
+% ste
+
+@article{Steinke04,
+    title={A unified theory of shared memory consistency},
+    author={Steinke, Robert C and Nutt, Gary J},
+    journal={Journal of the ACM (JACM)},
+    volume={51},
+    number={5},
+    pages={800--849},
+    year={2004},
+    publisher={ACM}
+}
+
+
+% wei
+
+@article{Wei17,
+    author = {Wei, Hengfeng and Huang, Yu and Lu, Jian},
+    title = {Probabilistically-Atomic 2-Atomicity: Enabling 
+    Almost Strong Consistency in Distributed Storage Systems},
+    journal = {IEEE Trans. Comput.},
+    issue_date = {March 2017},
+    volume = {66},
+    number = {3},
+    month = mar,
+    year = {2017},
+    issn = {0018-9340},
+    pages = {502--514},
+    numpages = {13},
+    url = {https://doi.org/10.1109/TC.2016.2601322},
+    doi = {10.1109/TC.2016.2601322},
+    acmid = {3057906},
+    publisher = {IEEE Computer Society},
+    address = {Washington, DC, USA},
+} 
+
