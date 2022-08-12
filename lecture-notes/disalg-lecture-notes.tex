@@ -55,14 +55,16 @@
 %----------
 \section{基本模型}
 
-我们讨论抽象的分布式算法设计与分析，主要基于消息传递模型（MSG）和共享内存模型（SHM）。
+我们讨论抽象的分布式算法设计与分析，主要基于消息传递模型和共享内存模型。
 这里将主要讲解计算模型的基本组成部分。而模型的具体细节，将放到具体的章节（第\ref{Chap_MSG}章、第\ref{Chap_SHM}章）去讲。
 
 我们首先讨论计算模型的两个基本的维度。一个维度是通信的载体，一个维度是时间模型。
+
 通信的载体主要包括消息传递（Message-passing，MSG）和共享内存（Shared Memory，SHM）。我们后续的章节也是按照这个维度来组织。
+
 时间模型主要包括异步模型（asynchronous model）和同步模型（synchronous model），也包括更深入的半同步模型（partially synchronous model）。
 
-\fur{参考两本教材中系统模型相关章节\cite{Aspnes19, Attiya04}。\cite[Sec 2.1.1]{Aspnes19}，作者对两本书（\cite{Aspnes19}和\cite{Attiya04}）中，对于“消息传递系统”不同建模方式的“异”和“同”进行了比较，并回顾了相关的历史。理解不同建模背后共性的部分，是学习如何对分布式系统进行合理抽象，并进行后续的问题定义、算法设计、算法分析的基础。
+\fur{参考两本教材中系统模型相关章节\cite{Aspnes19, Attiya04}。\cite[Sec 2.1.1]{Aspnes19}，作者对两本书（\cite{Aspnes19} 和 \cite{Attiya04}）中，对于“消息传递系统”不同建模方式的“异”和“同”进行了比较，并回顾了相关的历史。理解不同建模背后共性的部分，是学习如何对分布式系统进行合理抽象，并进行后续的问题定义、算法设计、算法分析的基础。
 }
 
 
@@ -89,6 +91,7 @@
 
 \fur{\cite{Cachin11}这本书就是基于编程抽象，来组织分布式系统编程相关内容的。}
 
+
 %============================================================
 \chapter{分布式算法的基本性质}
 
@@ -105,6 +108,8 @@
 模拟（simulation）。从外在使用者的角度，它是计算模型之间的转换。从模拟算法设计者的角度，它是一种性质或者说规约。
 
 下界与不可能性（impossibility）。这不是单个算法的性质，它是一个问题的所有可能算法的整体性质。
+
+\fur{上述性质的讨论，主要参考了\cite[Sec 1.2]{Aspnes19}}
 
 %----------------------------------------
 \part{消息传递算法} 
@@ -156,7 +161,9 @@
 
 首先需要对共识问题的严格定义，仔细地学习与体会。特别是validity的概念，初学的时候容易get不到它在说什么，为什么需要它。
 
-\cite{Attiya04}比较简单直接的引入共识问题。\cite{Lynch96-textbook}的讨论比较系统。 \cite{Aspnes19}的讨论，看上去比较“凌乱”地分散在好多章节中，问题、模型都在变化，但其实大概这就是共识问题，及其解法，形成的过程。所以，入门可以看第一个，学院派、学习者先看第二个，有点融会贯通的，看第三个。
+\fur{
+    \cite{Attiya04}比较简单直接的引入共识问题。\cite{Lynch96-textbook}的讨论比较系统。 \cite{Aspnes19}的讨论，看上去比较“凌乱”地分散在好多章节中，问题、模型都在变化，但其实大概这就是共识问题，及其解法，形成的过程。所以，入门可以看第一个，学院派、学习者先看第二个，有点融会贯通的，看第三个。
+}
 
 %--------------------
 \section{课本上的共识算法}
@@ -178,7 +185,7 @@
 \chapter{类Paxos共识算法族}
 
 
-包括Paxos \cite{Lamport01}，Raft \cite{Ongaro14}和Zookeeper \cite{Hunt10, Junqueira11}。
+包括Paxos \cite{Lamport01}，Raft \cite{Ongaro14}和Zab \cite{Hunt10, Junqueira11}。
 
 严格地讲，Zookeeper的Zab协议是一个atomic broadcast协议，由于atomic broadcast 和 consensus 两个问题可以互相规约，是等价的\cite{Chandra96unreliable}，所以我们也经常不仔细区分，都称之为共识算法。
 
@@ -295,7 +302,7 @@ SHM模型的技术细节，拓展性讨论将在此展开。
 
 我们这里将以原子寄存器（atomic register）为例，讲解SHM模型的基本概念。对于SHM一致性模型的更全面的讨论将在第\ref{Chap_SHM-Consis}章展开。
 
-\fur{SHM模型具体内容参考\cite[4.1]{Attiya04}和\cite[Chap 15]{Aspnes19}。}
+\fur{SHM模型具体内容参考\cite[Sec 4.1]{Attiya04}和\cite[Chap 15]{Aspnes19}。}
 
 %============================================================
 \chapter{SHM一致性模型} \label{Chap_SHM-Consis}
@@ -387,7 +394,7 @@ Bakery算法在一个维度有明显的问题，即它要求register能存任意
 
 
 %----------------------------------------
-\part{分布式算法分析技术}
+\part{分布式算法进阶选题}
 
 这部分讲解重要的分析技术。
 
@@ -439,6 +446,17 @@ Multi-writer情况的不可能性结果，期间有一些受限情况下的证�
 
 此外，既然fast是不可能严格实现atomic register的，那我们的另一系列的工作就讨论：假设fast是必须的，atomicity会被牺牲到什么程度。针对这一问题，我们提出了ASC（Almost Strong Consistency）的概念，并做了一些初步的理论分析与实验研究\cite{Wei17, Ouyang21}。
 
+
+%============================================================
+\chapter{基于Failure Detector的分布式算法设计}
+
+Failure Detector是分布式系统建模与分布式算法设计的重要概念 \cite{Chandra96unreliable}。
+
+Weakest failure detector的这一份工作名气挺大，内容很深刻 \cite{Chandra96weakest}。
+
+\fur{我们在自己的工作\cite{Huang20}中的一部分证明，其实就是这份工作证明的一个大幅简化版。我们做完\cite{Huang20}我才真正看懂这份工作\cite{Chandra96weakest}，并且收获很大，知道自己的证明其实可以仿照它，写得更严谨，更易懂。}
+
+
 %----------------------------------------
 \appendix
 
@@ -450,11 +468,11 @@ Multi-writer情况的不可能性结果，期间有一些受限情况下的证�
 \begin{itemize}
     %\item 2PC：2 Phase Commit（2PC）背后是分布事务的transactional atomicity维护的问题。2PC还有各种变体，比如3PC等。分布式数据库、云原生数据库时代，2PC和共识等机制等还有各种方式、各种程度的融合。这是我们目前很关注的问题，不过放在分布式算法的入门书里面有点太“专”了。
     
-    \item Failure Detector：虽然容错是分布式系统构建的重要概念，但是failure detector的抽象还是太理论了，只有比较偏理论研究的读者才适合全面深入地学习 \cite{Chandra96unreliable}。
-    Weakest failure detector的这一份工作名气也挺大，比较难懂\cite{Chandra96weakest}。后来我们在自己的工作\cite{Huang20}中的一部分证明，其实就是这份工作证明的一个大幅简化版。我们做完\cite{Huang20}我才真正看懂这份工作\cite{Chandra96weakest}，并且收获很大，知道自己的证明其实可以仿照它，写得更严谨，更易懂。
+    %\item Failure Detector：虽然容错是分布式系统构建的重要概念，但是failure detector的抽象还是太理论了，只有比较偏理论研究的读者才适合全面深入地学习 \cite{Chandra96unreliable}。
+    %Weakest failure detector的这一份工作名气也挺大，比较难懂\cite{Chandra96weakest}。后来我们在自己的工作\cite{Huang20}中的一部分证明，其实就是这份工作证明的一个大幅简化版。我们做完\cite{Huang20}我才真正看懂这份工作\cite{Chandra96weakest}，并且收获很大，知道自己的证明其实可以仿照它，写得更严谨，更易懂。
     
     \item 基于TLA+的分布式系统形式化规约与建模：这是Lamport发明的语言及工具链，可贵之处是在工业界获得了真正的应用，而不是像很多形式化理论与技术一样，论文发表之后就被束之高阁。
-    我们有一系列基于TLA+规约与验证的工作。同时我们现在还致力于将模型层的规约与验证，与代码层的测试结合起来，预计后续会有这方面的进展。
+    我们有一系列基于TLA+规约与验证的工作。同时我们现在还致力于将模型层的规约与验证，与代码层的测试结合起来，预计后续会有这方面的进展。未来考虑将TLC作为我们的实验平台，这样所有分布式算法的TLA+实现以及TLC运行，就成为了这门分布式算法课的配套实验内容。
 \end{itemize}
 
 
@@ -486,9 +504,9 @@ Multi-writer情况的不可能性结果，期间有一些受限情况下的证�
 
 
 %-- bib
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
 %\bibliographystyle{apalike}
-%\bibliographystyle{alpha}
+\bibliographystyle{alpha}
 \bibliography{disalg-lecture-notes}
 
 
