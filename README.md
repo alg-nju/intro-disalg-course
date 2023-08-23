@@ -12,7 +12,3 @@ Introduction to Distributed Algorithms
 讲义在持续写作中。
 
 当前内容请参考“/lecture-notes/disalg-lecture-notes.pdf”
-
-## 课程文献阅读
-
-请参考“/further-readings/disalg-reading.pdf”中列出的经典文献。
