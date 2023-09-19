@@ -1,0 +1,43 @@
+%--
+\chapter{类Paxos共识算法族}
+
+
+包括Paxos \cite{Lamport01}，Raft \cite{Ongaro14}和Zab \cite{Hunt10, Junqueira11}。
+
+严格地讲，Zookeeper的Zab协议是一个atomic broadcast协议，由于atomic broadcast 和 consensus 两个问题可以互相规约，是等价的\cite{Chandra96unreliable}，所以我们也经常不仔细区分，都称之为共识算法。
+
+%--------------------------------------------------------------------------------
+\section{Paxos} \label{}
+
+%----------------------------------------
+\subsection{基本Paxos算法}
+
+%----------------------------------------
+\subsection{Multi-Paxos}
+
+%--------------------------------------------------------------------------------
+\section{Raft} \label{}
+
+%--------------------------------------------------------------------------------
+\section{Zab} \label{}
+
+\fur{我们对Zab算法，以及ZooKeeper的系统设计，进行了\tla 形式化规约。规约在Github开源\footnote{https://github.com/Disalg-ICS-NJU/zookeeper-tla-spec}。关于\tla 的简介参考附录\ref{Appen:TLA}。}
+
+%--------------------------------------------------------------------------------
+\section{复制状态机框架Rabia} \label{Sec_Rabia}
+
+除了一些关系比较紧密的Paxos变体外，还有一些改动相对大一点的共识算法。它们仍然算是脱胎于Paxos算法，它们的设计也主要与Paxos的各种变体作充分对比。
+所以这类算法仍然放在这一章。
+
+专门提到Rabia的原因是，它的改进在方法学层面有比较重要的意义。
+
+我们知道，共识算法的正确性要把safety和liveness分开来谈。\cite{Lamport01}中的基础Paxos算法，只能保证saftety，它把liveness分离开来单独谈。
+
+由于FLP等一系列不可能性结果，异步环境的共识要保证liveness，必须要一些“额外的信息”。
+常见的额外信息包括时间信息、随机性等。
+
+此处的Rabia就是利用随机性，保证了livess。并且Rabia还很高效地保证了liveness。
+一方面，用randomness保证liveness，省去了传统共识算法中leader选举，以及leader失效时选举新leader等复杂的机制。
+另一方面，面对单数据中心场景中网络条件比较好的有利条件，Rabia还保证了良好的性能。
+
+\fur{The Rabia SMR framework \cite{Pan21}.}
