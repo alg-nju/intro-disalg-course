@@ -319,7 +319,7 @@ SHM模型的技术细节，拓展性讨论将在此展开。
 %--------------------
 \chapter{分布共享内存}
 
-%----------
+%----------------------------------------
 \section{基本概念}
 
 分布共享内存(Distributed Shared Memory, DSM)的概念可以从理论和系统两种不同的视角来辨析。
@@ -328,13 +328,24 @@ SHM模型的技术细节，拓展性讨论将在此展开。
 
 从系统的视角，DSM最早在\cite{Li89}中提出。随着多数据中心平台的出现，随着分布式云储存、 NoSQL、 NewSQL、云原生数据库等新型计算平台上新型数据密集型基础设施软件的出现，DSM可以看成是上述实际软件系统的理论抽象。虽然上述实际系统比DSM概念所描绘的系统要复杂很多，但是DSM的概念是上述系统构建的基础铺垫与支撑。
 
-%----------
+%----------------------------------------
 \section{Atomic register的MSG实现}
 
 Atomic register可以进一步分为single-writer和multi-writer的情况。Single-writer情况的MSG实现是Attiya的代表性工作\cite{Attiya95}。\cite{Lynch97}中把它推广到了multi-writer的情况。
 
 不过早期的论文都比较难懂，相关领域深入研究的读者顶多可以看看 \cite{Attiya95}，\cite{Lynch97} 基本不用直接去看了。\cite[Chap 16]{Aspnes19}有提炼后的重新表述，从学习的角度而言，看课本就可以了，很多不必要的细节都被合理抛弃了。
 
+%----------------------------------------
+\section{DSM的高效实现}
+
+在实际系统中，DSM受到效率问题的制约，其应用并不广泛。
+为了提升DSM实际实现的效率，一种可行的办法是利用DSM中数据访问的特定模式，做针对性的优化。
+
+在近期的一份工作中，研究人员利用了Rust语言中“ownership model”的概念，针对性地实现了一个支持SWMR regisgter的高效地DSM \cite{Ma24}。
+
+这一ownership model的概念，以及SWMR shared regisgter，我们在经典的Bakery算法中（参见\S \ref{Sec:Bakery}）会再次看到它的“simple but powerful”的应用。
+
+\fur{在\cite{Ma24}中包含对于DSM系统的一个mini survey，关注DSM系统的读者可以用它来“快速入门”。}
 
 %--------------------
 \chapter{互斥问题}
@@ -360,7 +371,7 @@ Atomic register可以进一步分为single-writer和multi-writer的情况。Sing
 作为一个实际系统中的例子，6.824（Spring 2021）的L4 - Primary-backup Replication里有一个用powerful原语的例子。当primary和backup断连时，它们都可以访问一个storage sverver，它们用test\&set原语来更新storage server上的一个标志位来实现容错场景下最核心的协同。
 
 %----------
-\section{Bakery算法：从“伪MUTEX算法”到“真MUTEX算法”}
+\section{Bakery算法：从“伪MUTEX算法”到“真MUTEX算法”} \label{Sec:Bakery}
 
 MUTEX算法中，比较经典的是Lamport提出的Bakery算法。可以分几个步骤来逐步理解这个算法。
 
