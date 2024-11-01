@@ -229,15 +229,22 @@ VR本身不是太有名，或者说风头完全被Paxos盖住。但是对于拜�
 \chapter{分布式系统执行的观察与理解}
 
 %----------
-\section{观察：切片集合的格结构}
+\section{分布式系统的全局切片}
 
 理解、构建一个异步MSG系统，一个重要的观念的跃迁，是从“绝对的、全序的时钟观”变成“相对的、偏序的时钟观”。形成这种异步分布时钟观的核心是消息传递的因果关系蕴含的时序happen-before关系和异步系统中时刻的概念：分布异步系统的consistent global snapshot。
 
-作为准备知识，需要读者对离散数学中学的偏序关系、格结构，有较为深入的了解。我为本科生通识课，做过一次相关的报告，可供参考：偏序集与格理论-及其在分布式系统中的应用\footnote{https://www.bilibili.com/video/BV1iU4y1M7SU/}。
-
-异步分布式消息传递系统的执行轨迹（称之以为一个distributed computation，也有很多其它名称），天然自带happen-before关系，基于这一关系可以定义系统的consistent global snapshot，而系统的所有snapshot集合，具有格结构。
-
+异步分布式消息传递系统的执行轨迹（称之以为一个distributed computation，也有很多其它名称），天然自带happen-before关系。
 这一happen-before关系的定义参见Lamport奠基性的论文\cite{Lamport78}。这一happen-before关系可以用各种不同的逻辑时钟来表示。各种逻辑时钟机制，可以看成是表示偏序关系的代价和表示偏序关系的能力之间的权衡。虽然Lamport那篇奠基性的论文名气很大，但是学习逻辑时钟，建议从最标准、表达能力最强、代价最大的vector clock入手\cite{Mattern89}。
+
+\fur{作为准备知识，需要读者对离散数学中学的偏序关系、格结构，有较为深入的了解。我为本科生通识课，做过一次相关的报告，可供参考：偏序集与格理论-及其在分布式系统中的应用\footnote{https://www.bilibili.com/video/BV1iU4y1M7SU/}。}
+
+如何得到一个分布式系统的snapshot，可以参考\cite{Chandy85}这一先驱性的经典工作。
+随着分布式系统的不断进化，各种snapshot技术也随着发展。近期snapshot技术，可以参考\cite{Yu24}等。
+
+%----------
+\section{观察：切片集合的格结构}
+
+%基于happen-before关系可以定义系统的consistent global snapshot，而系统的所有snapshot集合，具有格结构。
 
 了解happen-before关系及其vector clock编码之后，就可以正式理解distributed computation中的snapshot和snapshot之间的格结构，主要参见\cite{Mattern89}和\cite{Babaoglu93}。
 

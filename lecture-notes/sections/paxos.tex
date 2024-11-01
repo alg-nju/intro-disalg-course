@@ -37,7 +37,7 @@
 由于FLP等一系列不可能性结果，异步环境的共识要保证liveness，必须要一些“额外的信息”。
 常见的额外信息包括时间信息、随机性等。
 
-此处的Rabia就是利用随机性，保证了livess。并且Rabia还很高效地保证了liveness。
+此处的Rabia就是利用randomness，保证了livess。并且Rabia还很高效地保证了liveness。
 一方面，用randomness保证liveness，省去了传统共识算法中leader选举，以及leader失效时选举新leader等复杂的机制。
 另一方面，面对单数据中心场景中网络条件比较好的有利条件，Rabia还保证了良好的性能。
 
