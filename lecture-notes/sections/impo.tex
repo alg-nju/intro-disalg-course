@@ -1,0 +1,47 @@
+%--
+\chapter{不可能性结果}
+
+%----------------------------------------
+\section{概述}
+
+当你熟悉分布式算法、分布式系统的基本概念，对它们有一点宏观性的思考的时候，一个很重要的概念就是分布式算法、分布式系统中的基本的不可能性结果。
+
+\fur{早在89年的PODC上，Lynch就survey了“A hundred impossibility proofs for distributed computing”\cite{Lynch89}，到了03年，Faith Ellen（与人合作）又写了“Hundreds of impossibility results for distributed computing”\cite{Fich03}。最终到了14年，Hagit Attiya和Faith Ellen汇集成书“Impossibility Results for Distributed Computing”\cite{Attiya14} \footnote{上述理论结果背后一个有趣的现象是，上面所提到的作者都是女性，分布式算法领域两本教科书的作者也是女性，她们的女性学生后续也在分布式理论领域做出了出色的结果。}。}
+
+%----------------------------------------
+\section{FLP}
+
+不可能性结果的系统讨论超出introduction级别的教科书的范畴，有需要直接去看\cite{Attiya14}即可。但是有两组结果有一些特别的原因，专门提一下。
+
+一个是异步容错共识的不可能性结果FLP。由于共识算法的大热，它也老被人提起。它的原始证明见\cite{Fischer85}，直接看课本的表述更容易一些\cite{Attiya14}。
+
+看这类证明，必须对分布式系统的执行有一个“超然世外的上帝视角”。分布式系统的执行就像是电影拍摄的片段、素材，你就像剪辑导演，随便复制、改写、拼接，直到得到满足你要求的执行。
+
+%----------------------------------------
+\section{拜占庭共识：“叛徒”比例不能达到$\frac{1}{3}$}
+
+同步模型下解决拜占庭共识问题的一个基础结论是：当$3f>n$时，是不可能解决拜占庭共识问题的。其证明的关键在于，采用adversary argument的视角，可以让拜占庭错误的proc做你希望的任意动作，这样你就可以构造两个不可区分的执行。这两个执行的不可区分性与它们分别达成不同的共识，又是矛盾的。
+
+具体的构造是巧妙的，需要结合\cite[Sec 5.2.3]{Attiya04}的图示来理解。证明是先讨论n=3的特殊情况，然后再据此推出任意n情况的证明。
+
+%----------------------------------------
+\section{Chain Argument}
+
+这是不可能性结果证明中的一个简答而有效的技术，主要用于构造分布式系统执行之间的不可区分性（indistinguishability）。因为我们下面的理论证明用到了它，所以专门提一下。
+
+这个技术可以让你很形象地理解什么叫做，以一个剪辑导演的视角，拼接分布式系统的执行片段。我们的PODC2020工作的会议报告中，有一个形象的简单例子 \footnote{https://www.bilibili.com/video/BV1K54y1D766/}。
+
+具体内容可以看\cite[Chap 2]{Attiya14}。我自己由于下面研究的关系，实际看的是一份具体的研究工作\cite{Hadjistasi16}（这是一篇PODC16的短文，具体细节可以看它的arxiv长文版本）。
+
+%----------------------------------------
+\section{Fast Access to Atomic Registers}
+
+实现atomic register经常需要要两轮（roundtrip）的通信，由此一轮通信的算法就被称为是fast的。
+
+直觉上一轮通信是不可能实现atomic register抽象的，但是严格证明它却不那么容易。还是分single-writer和multi-writer的情况来逐个击破。
+
+\cite{Dutta10}证明了single-writer情况的fast实现不可能。
+
+Multi-writer情况的不可能性结果，期间有一些受限情况下的证明。我们自己的一份工作最终解决了这一问题\cite{Huang20}。
+
+此外，既然fast是不可能严格实现atomic register的，那我们的另一系列的工作就讨论：假设fast是必须的，atomicity会被牺牲到什么程度。针对这一问题，我们提出了ASC（Almost Strong Consistency）的概念，并做了一些初步的理论分析与实验研究\cite{Wei17, Ouyang21}。
